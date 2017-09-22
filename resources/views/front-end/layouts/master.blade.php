@@ -4,3 +4,4 @@
 @include('front-end.layouts.banner')
 @yield('content')
 @include('front-end.layouts.footer')
+@yield('script')

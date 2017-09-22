@@ -17,16 +17,16 @@
                     <div class="col-md-6">
                         <div class="input-group">
                             <span class="glyphicon glyphicon-user"></span>
-                            <input type="text" class="form-control" placeholder="Tên đăng nhập">
+                            <input type="text" id="username" class="form-control" placeholder="Tên đăng nhập">
                         </div>
                         <div class="input-group">
                             <span class="glyphicon glyphicon-lock"></span>
-                            <input type="password" class="form-control" placeholder="Mật khẩu">
+                            <input type="password" id="password" class="form-control" placeholder="Mật khẩu">
                         </div>
                         <div class="col-md-6 block_rad">
                             <input type="radio">Remember
                         </div>
-                        <button type="button" class="btn btn-primary">Login</button>
+                        <button type="button" id="login" class="btn btn-primary">Login</button>
                         <p class="text-again"><a href="">Quên mật khẩu</a></p>
                     </div>
                     <div class="col-md-6 cache">
@@ -40,3 +40,13 @@
         </div><!-- modal-content -->
     </div><!-- modal-dialog -->
 </div><!-- modal fade -->
+@section('script')
+<script type="text/javascript">
+   $(document).ready(function () {
+        $('#login').click(function () {
+            var username = $('username').val();
+            alert(username);
+        });
+   });
+</script>
+@section

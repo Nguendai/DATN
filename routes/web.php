@@ -12,12 +12,7 @@
 */
 
 Route::get('/', ['as'  => 'index', 'uses' =>'PagesController@getHome']);
-Route::get('front2',function(){
-   return view('front_end.index');
-});
-Route::get('demo2',function(){
-    return view('front_end.detail');
-});
+
 Route::get('search', ['as'  => 'getsearch', 'uses' =>'MailController@getSearch']);
 Route::get('search-pro', ['as'  => 'getsearch', 'uses' =>'MailController@getSearchPro']);
 
