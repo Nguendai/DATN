@@ -1,0 +1,141 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.thumbnail:hover {
+    opacity: 1.00;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: box-shadow 0.5s;
+}
+
+.heading .thumbnail {
+    border-radius: 0;
+}
+
+.heading {
+    padding: 0px;
+    border-radius: 0;
+    position: relative;
+}
+
+#main-container .list-group a {
+    color: #7f7f7f;
+    font-size: 16px;
+}
+
+#main-container .list-group a:hover {
+    text-decoration: none;
+}
+
+#main-container .list-group li:hover {
+    background: #f4f5f5;
+}
+
+i.fa.fa-chevron-right {
+    color: rgba(0, 0, 0, 0.51);
+}
+
+#main-container ul.list-group {
+    border-radius: 0;
+    border: none;
+}
+
+h3.side-heading {
+    margin-top: 15px;
+    padding: 12px 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #ffb400;
+    background: #252a2f;
+}
+
+.product-info-box .content {
+    color: #8b8b8b;
+    font-size: 15px;
+    border: 1px solid #e8e8e8;
+    padding: 8px;
+    background: white;
+    line-height: 29px;
+}
+
+.product-info-box .heading, .rowtop h1 {
+    padding: 13px 20px;
+    font-size: 18px;
+    color: #2f353b;
+    text-transform: uppercase;
+    background: #fff;
+    border-top: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    border-bottom: 4px solid #ffb400;
+    border-left: 1px solid #e8e8e8;
+}
+
+.product-info-box {
+    padding-top: 10px;
+}
+
+.options .cart-button.button-group {
+    padding: 8px 0px;
+}
+
+strong.label.label-success {
+    padding: 5px 12px;
+}
+
+.product-details ul li font {
+    font-size: 15px;
+}
+
+.product-details li {
+    line-height: 41px;
+}
+
+.product-details hr {
+    border-top-color: rgba(0, 0, 0, 0.38);
+}
+
+.price span.price-new {
+    font-size: 40px;
+    color: red;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px #cc0000;
+}
+
+.price span.price-head {
+    font-size: 25px;
+}
+
+.rowtop h1 {
+    margin: 0px;
+    padding: 4px 0px;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: monospace;
+    color: #1b1507;
+    padding-left: 13px;
+    text-shadow: 3px 2px rgba(128, 128, 128, 0.52);
+    background: white;
+    margin-bottom: 12px;
+    width: 98%;
+    border-radius: 2px;
+}
+
+.product-info .rowtop {
+    padding-left: 15px;
+}
+
+#main-container ol.breadcrumb {
+    text-transform: uppercase;
+    padding: 10px 18px;
+    border: 1px solid #e8e8e8;
+    background: #fff;
+    margin-top: 15px;
+}
+
+@media only screen and (max-width: 805px) {
+    #main-container .col-md-3 {
+    display: none;
+    }
+    
+}

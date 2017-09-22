@@ -1,0 +1,15 @@
+.tiishop_btn {
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  font-size: 14px;
+  word-spacing: 2px;
+  line-height: 44px;
+  transition: all 0.4s;
+  text-transform: uppercase;
+  padding-left: 15px;
+  padding-right: 15px;
+  transition: all 0.4s;
+  font-weight: 700; }
+  .tiishop_btn:hover {
+    text-decoration: none; }
