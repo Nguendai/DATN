@@ -42,7 +42,7 @@ app.controller('navController', function ($scope) {
 app.controller('login',['$scope','$http',function ($scope,$http) {
 	
     $scope.save = function(){
-    	console.log(1);
+    	console.log($scope.logs.username);
         var data = new FormData();
         $scope.logs.username = $scope.logs.username?$scope.logs.username:'';
         $scope.logs.password = $scope.logs.password?$scope.logs.password:'';
@@ -51,7 +51,7 @@ app.controller('login',['$scope','$http',function ($scope,$http) {
         $http({
             method:'POST',
             data:data,
-            url:'http://localhost/DATN/public/khachhang/login',
+            url:'http://localhost:8000/khachhang/login',
             headers :{'Content-Type':undefined},
         }).then(function(reponse){
         	if(reponse['data']['code'] == 100){
