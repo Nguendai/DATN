@@ -39,3 +39,36 @@ app.controller('navController', function ($scope) {
         $scope.isActive = !$scope.isActive;
     }
 });
+app.controller('login',['$scope','$http',function ($scope,$http) {
+	
+    $scope.save = function(){
+    	console.log(1);
+        var data = new FormData();
+        $scope.logs.username = $scope.logs.username?$scope.logs.username:'';
+        $scope.logs.password = $scope.logs.password?$scope.logs.password:'';
+		data.append('username',$scope.logs.username);
+		data.append('password',$scope.logs.password);
+        $http({
+            method:'POST',
+            data:data,
+            url:'http://localhost/DATN/public/khachhang/login',
+            headers :{'Content-Type':undefined},
+        }).then(function(reponse){
+        	if(reponse['data']['code'] == 100){
+        		location.reload();
+        	}else{
+        		$('#danger').removeClass('hidden');
+        	}
+        },function(error){
+
+        });
+	}
+    // $scope.log.$invalid=true;
+
+}]);
+app.controller('modal',['$scope','$http',function ($scope,$http) {
+	$scope.modal = function(){
+		$('#logina')[0].reset();;
+		$('#danger').addClass('hidden');
+	}
+}]);
