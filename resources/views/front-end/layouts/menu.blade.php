@@ -1,4 +1,4 @@
-<header id="tiishop-header"  class="clearfix" >
+<header id="tiishop-header"  class="clearfix"  >
     <div class="container">
         <div class="row" style="display: flex; align-items: center;">
             <div class="col-md-2 col-xs-9 __img">
@@ -151,11 +151,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 clearfix hidden-xs hidden-sm pl-0">
+            <div class="col-md-2 clearfix hidden-xs hidden-sm pl-0" ng-controller="modal" >
 
                 @if(Auth::guest())
                     <div class="__login m-font pull-right">
-                        <a href="" data-toggle="modal" class="myModal" data-target="#myModalDN" class="tiishop_btn fz-12 color-light bgc-main1 color-hover-light bgc-hover-main2">
+                        <a href="" data-toggle="modal" class="myModal" data-target="#myModalDN" class="tiishop_btn fz-12 color-light bgc-main1 color-hover-light bgc-hover-main2" ng-click="modal()" >
                             <i class="fa fa-user-circle pr-5"></i>ĐĂNG NHẬP</a>
                     </div>
 

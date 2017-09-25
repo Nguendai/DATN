@@ -13,6 +13,7 @@ class CategoryController extends Controller
     	return view('back-end.category.cat-list',compact('data'));
     }
     public function getAdd(){
+        $i = 1;
 	    $data=category::all();
 	    return view('back-end.category.add',compact('data'));
     }

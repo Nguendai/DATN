@@ -32,11 +32,19 @@ class CustomerController extends Controller
 		return redirect()->back()->with('success','Đăng ký tài khoản thành công!');
 	}
 	public function postLogin(Request $request) {
-		if (Auth::attempt(['email' => $request->txtemail, 'password' => $request->txtpassword])){
-			return redirect()->back();
+		if (Auth::attempt(['email' => $request->username, 'password' => $request->password])){
+			return response()->json([
+			    'code' => 100,
+                'message' => 'Sucesss',
+                'data' => Auth::user()->name,
+            ]);
 		}
 		else{
-			return redirect('/')->with('error','Tài khoản hoặc mật khẩu không đúng');
+			return response()->json([
+			    'code' => 101,
+                'message'  => 'Error',
+
+            ]);
 		}
 	}
 	public function Logout(){

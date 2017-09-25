@@ -35,7 +35,7 @@
     {{--<link rel="stylesheet" href="{!! url('front-end/css/foundation.css') !!}" />--}}
     {{--<link rel="stylesheet" href="{!! url('front-end/css/demo.css') !!}" />--}}
 </head>
-<body ng-app="angularAqua">
+<body ng-app="angularAqua" >
 <div class="tiishop_topbar hidden-sm hidden-xs">
     <div class="container ">
         <div class="row">
@@ -64,4 +64,3 @@
         </div>
     </div>
 </div>
-
