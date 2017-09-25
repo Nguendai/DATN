@@ -42,7 +42,6 @@ app.controller('navController', function ($scope) {
 app.controller('login',['$scope','$http',function ($scope,$http) {
 	
     $scope.save = function(){
-    	console.log(1);
         var data = new FormData();
         $scope.logs.username = $scope.logs.username?$scope.logs.username:'';
         $scope.logs.password = $scope.logs.password?$scope.logs.password:'';

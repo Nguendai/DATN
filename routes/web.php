@@ -18,8 +18,8 @@ Route::get('search-pro', ['as'  => 'getsearch', 'uses' =>'MailController@getSear
 
 Route::Auth();
 //face book login
-Route::get('auth/facebook', 'Auth\SocialController@redirectToProvider');
-Route::get('auth/facebook/callback', 'Auth\SocialController@handleProviderCallback');
+Route::get('auth/facebook', 'SocialAuthController@redirect');
+Route::get('callback', 'SocialAuthController@callback');
 
 Route::get('auth/google', 'Auth\SocialController@redirectToProviderGoogle');
 Route::get('auth/google/callback', 'Auth\SocialController@handleProviderCallbackGoogle');
