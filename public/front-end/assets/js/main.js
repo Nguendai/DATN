@@ -50,7 +50,7 @@ app.controller('login',['$scope','$http',function ($scope,$http) {
         $http({
             method:'POST',
             data:data,
-            url:'http://localhost/DATN/public/khachhang/login',
+            url:'http://localhost:8000/khachhang/login',
             headers :{'Content-Type':undefined},
         }).then(function(reponse){
         	if(reponse['data']['code'] == 100){
@@ -62,12 +62,48 @@ app.controller('login',['$scope','$http',function ($scope,$http) {
 
         });
 	}
+    app.directive("passwordVerify", function() {
+        return {
+            require: "ngModel",
+            scope: {
+                passwordVerify: '='
+            },
+            link: function(scope, element, attrs, ctrl) {
+                scope.$watch(function() {
+                    var combined;
+
+                    if (scope.passwordVerify || ctrl.$viewValue) {
+                        combined = scope.passwordVerify + '_' + ctrl.$viewValue;
+                    }
+                    return combined;
+                }, function(value) {
+                    if (value) {
+                        ctrl.$parsers.unshift(function(viewValue) {
+                            var origin = scope.passwordVerify;
+                            if (origin !== viewValue) {
+                                ctrl.$setValidity("passwordVerify", false);
+                                return undefined;
+                            } else {
+                                ctrl.$setValidity("passwordVerify", true);
+                                return viewValue;
+                            }
+                        });
+                    }
+                });
+            }
+        };
+    });
     // $scope.log.$invalid=true;
 
 }]);
 app.controller('modal',['$scope','$http',function ($scope,$http) {
-	$scope.modal = function(){
-		$('#logina')[0].reset();;
+	$scope.modal1  = function(){
+		var i = 0;
+		console.log('i');
+		$('#logina')[0].reset();
 		$('#danger').addClass('hidden');
+		$('#myModalDN').modal('show');
+		
 	}
 }]);
+

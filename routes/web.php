@@ -53,7 +53,6 @@ Route::group(['prefix'=>'khachhang'],function (){
 	Route::get('forgot',['as'=>'getforgot','uses'=>'CustomerController@getForgot']);
 	Route::post('forgot',['as'=>'postforgot','uses'=>'CustomerController@postForgot']);
 	
-	Route::post('login',['as'=>'postlogin','uses'=>'CustomerController@postLogin']);
 	Route::get('logout',['as'=>'logout','uses'=>'CustomerController@Logout']);
 	
 	Route::post('comment/{id}/{slug}',['as'=>'postcomment','uses'=>'CustomerController@postComment']);

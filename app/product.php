@@ -11,7 +11,9 @@ class product extends Model
 
 	public function category()
 	{
+        die;
 		return $this->belongsTo('App\category','cat_id');
+
 	}
 	public function product_detail()
     {

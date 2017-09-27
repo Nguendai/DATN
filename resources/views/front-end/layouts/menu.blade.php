@@ -155,7 +155,7 @@
 
                 @if(Auth::guest())
                     <div class="__login m-font pull-right">
-                        <a href="" data-toggle="modal" class="myModal" data-target="#myModalDN" class="tiishop_btn fz-12 color-light bgc-main1 color-hover-light bgc-hover-main2" ng-click="modal()" >
+                        <a href=""   class="tiishop_btn fz-12 color-light bgc-main1 color-hover-light bgc-hover-main2" ng-click="modal1()" >
                             <i class="fa fa-user-circle pr-5"></i>ĐĂNG NHẬP</a>
                     </div>
 

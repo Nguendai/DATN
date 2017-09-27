@@ -32,7 +32,6 @@ class CustomerController extends Controller
 		return redirect()->back()->with('success','Đăng ký tài khoản thành công!');
 	}
 	public function postLogin(Request $request) {
-		dd($request->username);
 		if (Auth::attempt(['email' => $request->username, 'password' => $request->password])){
 			return response()->json([
 			    'code' => 100,
