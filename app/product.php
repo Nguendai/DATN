@@ -11,7 +11,6 @@ class product extends Model
 
 	public function category()
 	{
-        die;
 		return $this->belongsTo('App\category','cat_id');
 
 	}
@@ -21,7 +20,7 @@ class product extends Model
     }
     public function product_img()
     {
-        return $this->hasMany('App\product_img','pro_id');
+        return $this->hasMany('App\product_img','pro_id','id');
     }
     public function oder_detail()
     {

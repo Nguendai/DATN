@@ -12,43 +12,60 @@ use DB;
 use Auth;
 use App\comment;
 use Mail;
+use Validator;
+use Session;
 
 class CustomerController extends Controller
 {
-	public function getSignUp(){
-		return view('front-end.signup');
-	}
+	
 	public function postSignUp(CustomerRequest $request){
-		$cus=new User();
-		$cus->name=$request->txtname;
-		$cus->address=$request->txtaddress;
-		$cus->email=$request->txtemail;
-		$cus->phone=$request->txttel;
-		$cus->images='';
-		$cus->password=bcrypt($request->txtpassword);
-		$cus->created_at=new DateTime();
-		$cus->remember_token=$request->_token;
-		$cus->save();
-		return redirect()->back()->with('success','Đăng ký tài khoản thành công!');
+		try{
+			$this->validate($request,[
+				'email' => 'required|email|unique:users',
+				'name' => 'required|max:15',
+			]);
+			$cus=new User();
+			$cus->name=$request->name;
+			$cus->address='';
+			$cus->email=$request->email;
+			$cus->phone=$request->phone;
+			$cus->images='';
+			$cus->password=bcrypt($request->password);
+			$cus->created_at=new DateTime();
+			$cus->remember_token=$request->_token;
+			$cus->save();
+			$data =[
+				'code' => 100,
+				'message' => 'Sucess',
+			];
+		}catch (Exception $e){
+			$data = [
+				'code' => 404,
+				'message' => $e->getMessage(),
+			];
+		}
+		return response()->json($data);
 	}
 	public function postLogin(Request $request) {
 		if (Auth::attempt(['email' => $request->username, 'password' => $request->password])){
 			return response()->json([
-			    'code' => 100,
-                'message' => 'Sucesss',
-                'data' => Auth::user()->name,
-            ]);
+				'code' => 100,
+				'message' => 'Sucesss',
+				'data' => Auth::user()->name,
+			]);
 		}
 		else{
 			return response()->json([
-			    'code' => 101,
-                'message'  => 'Error',
+				'code' => 101,
+				'message'  => 'Error',
 
-            ]);
+			]);
 		}
 	}
 	public function Logout(){
+		Session::flush();
 		Auth::logout();
+
 		return redirect('/');
 	}
 	public function postComment($id,$slug,Request $request) {
@@ -64,11 +81,11 @@ class CustomerController extends Controller
 		}
 		else{
 			$pro=product::find($id)->category;
-           echo '<script type="text/javascript">
+			echo '<script type="text/javascript">
 			alert("Bạn cần đăng nhập để bình luận!");
 			window.location.href = "';
-		    echo ('/tii_shop/chi-tiet-san-pham/'.$id.'/'.$slug);
-		    echo '";
+			echo ('/tii_shop/chi-tiet-san-pham/'.$id.'/'.$slug);
+			echo '";
 			</script>';
 		}
 	}
@@ -90,7 +107,7 @@ class CustomerController extends Controller
 				'password'=>$password,
 			];
 			Mail::send('front-end.reset',$data,function($m){
-				$m->from('tientungs295@gmail.com','Hỗ trợ TiiShop');
+				$m->from('dainv95@gmail.com','Hỗ trợ TiiShop');
 				$m->to($GLOBALS['email'])->subject('Mật khẩu khôi phục');
 			});
 			return redirect()->back()->with('success','Mật khẩu đã được khôi phục bạn vui lòng đăng nhập vào email để kiểm tra!');

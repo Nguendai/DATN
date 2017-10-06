@@ -16,13 +16,14 @@ Route::get('/', ['as'  => 'index', 'uses' =>'PagesController@getHome']);
 Route::get('search', ['as'  => 'getsearch', 'uses' =>'MailController@getSearch']);
 Route::get('search-pro', ['as'  => 'getsearch', 'uses' =>'MailController@getSearchPro']);
 
+
 Route::Auth();
 //face book login
 Route::get('auth/facebook', 'SocialAuthController@redirect');
 Route::get('callback', 'SocialAuthController@callback');
 
-Route::get('auth/google', 'Auth\SocialController@redirectToProviderGoogle');
-Route::get('auth/google/callback', 'Auth\SocialController@handleProviderCallbackGoogle');
+Route::get('auth/google', 'SocialAuthController@redirectToProviderGoogle');
+Route::get('google/callback', 'SocialAuthController@handleProviderCallbackGoogle');
 //login route
 Route::get('admin/login', ['as'  => 'getlogin', 'uses' =>'AdminAuth\LoginController@showLoginForm']);
 Route::post('admin/login', ['as'  => 'postlogin', 'uses' =>'AdminAuth\LoginController@login']);
@@ -38,17 +39,16 @@ Route::get('admin/logout', ['as'  => 'getlogout', 'uses' =>'Admin\LoginControlle
 Route::get('loai-san-pham/{id}/{slug}','PagesController@getProduct');
 Route::get('chi-tiet-san-pham/{id}/{slug}', ['as'  => 'getdetail', 'uses' =>'PagesController@Detail']);
 //shopping-cart
-Route::get('mua-hang/{id}/{tensanpham}',['as'=>'muahang','uses'=>'PagesController@Purchase']);
-Route::get('gio-hang',['as'=>'giohang','uses'=>'PagesController@Cart']);
-Route::get('xoa-san-pham/{id}',['as'=>'xoasanpham','uses'=>'PagesController@delProductCart']);
-Route::get('cap-nhat/{id}/{qty}',['as'=>'capnhatsanpham','uses'=>'PagesController@updateProductCart']);
+
 Route::get('checkout',['as'=>'checkout','uses'=>'PagesController@checkOut']);
 Route::post('checkout',['as'=>'success','uses'=>'MailController@Success']);
 Route::get('search-pro/{parent_id}',['as'=>'searchpro','uses'=>'PagesController@searchPro']);
 //customer
 Route::group(['prefix'=>'khachhang'],function (){
-	Route::get('signup',['as'=>'getsignup','uses'=>'CustomerController@getSignUp']);
+	Route::get('getcart/{id}','PagesController@addCart');
+	// Route::get('signup',['as'=>'getsignup','uses'=>'CustomerController@getSignUp']);
 	Route::post('signup',['as'=>'postsignup','uses'=>'CustomerController@postSignUp']);
+	Route::post('login',['as'=>'postlogin','uses'=>'CustomerController@postLogin']);
 	
 	Route::get('forgot',['as'=>'getforgot','uses'=>'CustomerController@getForgot']);
 	Route::post('forgot',['as'=>'postforgot','uses'=>'CustomerController@postForgot']);
@@ -56,6 +56,11 @@ Route::group(['prefix'=>'khachhang'],function (){
 	Route::get('logout',['as'=>'logout','uses'=>'CustomerController@Logout']);
 	
 	Route::post('comment/{id}/{slug}',['as'=>'postcomment','uses'=>'CustomerController@postComment']);
+	Route::get('cart',['as'=>'giohang','uses'=>'PagesController@listCart']);
+	Route::get('delete-item/{id}',['as'=>'xoasanpham','uses'=>'PagesController@delItem']);
+	Route::post('update_cart/{id}',['as'=>'update','uses'=>'PagesController@updateCart']);
+
+	Route::get('cap-nhat/{id}/{qty}',['as'=>'capnhatsanpham','uses'=>'PagesController@updateProductCart']);
 });
 //contact-us
 Route::post('contact-us',['as'=>'contactus','uses'=>'MailController@Contact']);

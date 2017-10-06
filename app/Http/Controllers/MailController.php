@@ -42,11 +42,11 @@ class MailController extends Controller
 		    $data['total']=Cart::total();
 		    $email = $request->txtemail;
 		    Mail::send('front-end.email',$data,function($m) use ($email) {
-			    $m->from('tientungs295@gmail.com', 'Hóa đơn bán hàng');
-			    $m->to($email)->subject('Hóa đơn mua hàng từ Tii Shop');
+			    $m->from('dainv320@gmail.com', 'Hóa đơn bán hàng');
+			    $m->to($email)->subject('Hóa đơn mua hàng từ TiiShop');
 		    });
 		    Cart::destroy();
-		    return view('front-end.success');
+		    return view('front_end.success');
     }
 	public function getSearch(Request $request){
 		$keyword=$request->txttk;
@@ -61,8 +61,8 @@ class MailController extends Controller
 		else{
 			$str_keyword=str_replace(' ','%',$keyword);
 			
-			$mobile=DB::table('products')->where('name','like','%'.$str_keyword.'%')->join('product_details','product_details.pro_id','=','products.id')->select('products.*','product_details.vga','product_details.screen','product_details.cpu','product_details.cam2')->paginate(12);
-			return view('front-end.search',compact(['mobile','keyword']));
+			$products=DB::table('products')->where('name','like','%'.$str_keyword.'%')->join('product_details','product_details.pro_id','=','products.id')->select('products.*','product_details.*')->paginate(12);
+			return view('front_end.search',compact(['products','keyword']));
 		}
 	}
 	public function Contact(Request $request){
@@ -71,7 +71,7 @@ class MailController extends Controller
 		$data['text']=$request->txttext;
 		$email=$request->txtemail;
 		Mail::send('front-end.text',$data,function($m) use ($email) {
-			$m->from('tientungs295@gmail.com', 'Hỗ trợ khách hàng');
+			$m->from('dainv320@gmail.com', 'Hỗ trợ khách hàng');
 			$m->to('tienlq@newayict.com')->subject('Phản hồi khách hàng');
 		});
 		echo '<script type="text/javascript">

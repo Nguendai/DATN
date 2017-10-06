@@ -2,6 +2,19 @@
     padding: 0px;
     margin: 0px;
 }
+.laptop .image {
+    height: 250px;
+}
+.products-list .mobiphone,.laptop {
+    transform: translateX(-500px);
+    opacity: 0;
+    transition: all 1.5s;
+}
+.products-list .show {
+    transform: translateX(0px);
+    opacity: 1;
+
+}
 .icon-up:before {
     content: "\e0b1";
 }
@@ -190,7 +203,7 @@ button.btn.btn-primary {
 }
 
 .col-md-6.cache {
-    margin-top: 40px;
+    /* margin-top: 40px; */
 }
 
 .modal-body .col-md-6.block_rad {
@@ -322,9 +335,7 @@ input.form-control {
 input:required {
     box-shadow:none;
 }
-input:invalid {
-    box-shadow:0 0 3px red;
-}
+
 
 .thumbnail .image:hover {
 }
