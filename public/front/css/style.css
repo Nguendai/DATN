@@ -2,6 +2,13 @@
     padding: 0px;
     margin: 0px;
 }
+.thumbnail button.btn.btn-wishlist a {
+    color: white;
+}
+
+.thumbnail button.btn.btn-wishlist a:hover {
+    color: #ffb400;
+}
 .laptop .image {
     height: 250px;
 }

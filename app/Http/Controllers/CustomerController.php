@@ -70,21 +70,29 @@ class CustomerController extends Controller
 	}
 	public function postComment($id,$slug,Request $request) {
 		if (Auth::check()){
-			$cm=new comment();
-			$cm->name=Auth::user()->name;
-			$cm->email=Auth::user()->email;
-			$cm->comment=$request->txtcomment;
-			$cm->pro_id=$id;
-			$cm->c_id=Auth::user()->id;
+			$cm = new comment();
+			$cm->name = Auth::user()->name;
+			$cm->email = Auth::user()->email;
+			$cm->comment = $request->comment;
+			$cm->pro_id = $id;
+			$cm->user_id = Auth::user()->id;
 			$cm->save();
-			return redirect()->back();
+			$comment = DB::table('comments')->where('id',$cm->id)->first();
+			$data = '<ul class="clearfix">
+	         <li class="m-font fz-18 mb-5">
+	          '.$comment->name.
+	         '</li>
+	         <li>'.$comment->comment.'</li>
+	         <li class="color-gray_8 pull-right">'.$comment->created_at.'</li>
+	       </ul>';
+			return $data;
 		}
 		else{
 			$pro=product::find($id)->category;
 			echo '<script type="text/javascript">
 			alert("Bạn cần đăng nhập để bình luận!");
 			window.location.href = "';
-			echo ('/tii_shop/chi-tiet-san-pham/'.$id.'/'.$slug);
+			echo ('/chi-tiet-san-pham/'.$id.'/'.$slug);
 			echo '";
 			</script>';
 		}

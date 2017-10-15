@@ -2,6 +2,30 @@
     padding: 0;
     margin: 0;
 }
+li.m-font.fz-18.mb-5 {
+    font-size: 19px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.clearfix li {
+    list-style: none;
+}
+
+li.color-gray_8.pull-right {
+    color: #888!important;
+}
+ul.clearfix {
+    padding: 15px;
+    padding-top: 5px;
+    border-bottom: 1px dotted #dddddd;
+}
+
+.__description.mb-40 {
+    margin-bottom: 40px;
+    margin-top: 15px;
+    background: white;
+}
 .__comment {
     margin-bottom: 20px;
 }

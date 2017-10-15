@@ -98,7 +98,6 @@
 <script type="text/javascript" src="{!! url('front/vendor/bootstrap.js') !!}"></script>
 <script src="{!! url('front/vendor/jquery-3.2.1.js') !!}"></script>
 <script type="text/javascript" src="{!! url('front/vendor/jquery.js') !!}"></script>
-<script type="text/javascript" src="{!! url('front/vendor/jquery-ui.min.js') !!}"></script>
 <script src="{!! url('front/dist/xzoom.min.js') !!}" type="text/javascript" ></script>
 <script type="text/javascript" src="{!! url('front/js/index.js') !!}"></script>
 <script type="text/javascript" src="{!! url('front/vendor/angular.min.js') !!}"></script>
@@ -108,8 +107,6 @@
 </body>
 
 <script>
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
+  
 </script>
 </html>

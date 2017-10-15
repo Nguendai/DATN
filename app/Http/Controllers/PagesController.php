@@ -12,6 +12,8 @@ use App\category;
 use App\product_img;
 use Cart;
 use Session;
+use Auth;
+use App\binhchon;
 
 class PagesController extends Controller
 {
@@ -40,6 +42,18 @@ class PagesController extends Controller
 	    $pro_related=DB::table('products')->where('cat_id',$cat_id)->where('id','<>',$id)->take(5)->get();
     	return view('front_end.detail',compact(['pro','slug','pro_related','pro_img','category','mobile']));
     }
+    public function Detail_1($id){
+        $pro=product::find($id);
+        $pro_img=DB::table('product_imgs')->where('pro_id',$id)->select('product_imgs.images')->paginate(3);
+        
+        $cat_id = $pro->cat_id;
+        $mobile=DB::table('products')->where('cat_id',$cat_id)
+            ->join('product_details','product_details.pro_id','=','products.id')->select('products.*','product_details.*')
+            ->paginate(3);
+        $category =category::all();
+        $pro_related=DB::table('products')->where('cat_id',$cat_id)->where('id','<>',$id)->take(5)->get();
+        return view('front_end.detail',compact(['pro','pro_related','pro_img','category','mobile']));
+    }
     
    
     public function checkOut(){
@@ -65,7 +79,17 @@ class PagesController extends Controller
     }
     public function updateCart(Request $request,$id){
         Cart::update($id, $request->quantity);
-    
         return redirect()->back();
+    }
+    public function likeThis($id){
+        try{
+            $like = new binhchon();
+            $like->user_id = Auth::user()->id;
+            $like->pro_id = $id;
+            $like->save();
+            return redirect()->back();
+        } catch(Exception $e){
+            return $e->getMessage();
+        }
     }
 }

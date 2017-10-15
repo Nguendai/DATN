@@ -101,7 +101,11 @@ class ProductController extends Controller
 	    return redirect('admin/sanpham')->with('success','Đã thêm thành công !');
     }
     public function getList(){
-		    $data = product::paginate(10);
+		    $data = product::all();
+		    foreach ($data as $key => $value) {
+		    	$a = $value->product_img->id;
+		    	dd($a);
+		    }
 		    return view('back-end.products.list',compact('data'));
     }
     public function getDel($id){

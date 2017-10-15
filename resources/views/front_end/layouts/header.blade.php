@@ -98,7 +98,7 @@
                 <!-- Logo Starts -->
                 <div class="col-md-6">
                     <div id="logo">
-                        <a href="#"><img src="{!! url('front/img/logo1.png') !!}" title="Spice Shoppe" alt="Spice Shoppe"
+                        <a href="{{url('/')}}"><img src="{!! url('front/img/logo1.png') !!}" title="Spice Shoppe" alt="Spice Shoppe"
                            class="img-responsive"></a>
                        </div>
                    </div>
@@ -147,7 +147,7 @@
                                                 </a>
                                             </td>
                                             <td class="text-left">
-                                                <a href="#">
+                                                <a href="chi-tiet-san-pham-sl/{{$data->id}}">
                                                     {{$data->name}}
                                                 </a>
                                             </td>
@@ -214,7 +214,7 @@
         $data = DB::table('categories')->select('id','name','parent_id','slug')->where('parent_id',0)->get();
         ?>
         <ul class="nav navbar-nav" ng-class={"show-menu":isActive}>
-            <li><a href="">Phone &amp; Shop</a></li>
+            <li><a href="{{url('/')}}">Phone &amp; Shop</a></li>
             @foreach($data as $list)
             <li class="dropdown">
                 <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">
