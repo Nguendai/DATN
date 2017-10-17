@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Session;
 use Cart;
-use DB;
+use DB,Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,7 +24,18 @@ class AppServiceProvider extends ServiceProvider
                 $subtotal= Cart::subtotal();
                 $view->with(['content'=>$content,'subtotal'=>$subtotal]);
             }
-        });   
+        });  
+        view()->composer(['front_end.layouts.contact-us',],function($view){
+            if(!Auth::guest()){
+                $id = Auth::user()->id;
+                $messages = [];
+                $group = DB::table('group_messages')->where('user_id',$id)->first();
+                if( $group){
+                    $messages = DB::table('messages')->where('group_id',$group->id)->orderBy('id','desc')->paginate(15);
+                }
+                $view->with(['messages'=>$messages]);
+            }
+        });        
         view()->composer(['front_end.layouts.menu_right'],function($view){
             $best_vote = DB::table('products')
             ->join('binhchon','binhchon.pro_id','products.id')

@@ -49,6 +49,8 @@ Route::get('search-pro/{parent_id}',['as'=>'searchpro','uses'=>'PagesController@
 //customer
 Route::group(['prefix'=>'khachhang'],function (){
 
+	Route::post('send/{id}','Chat\MessagesController@postSend');
+
 	Route::get('binhchon/{id}','PagesController@likeThis');
 
 	Route::get('getcart/{id}','PagesController@addCart');
