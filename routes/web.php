@@ -72,9 +72,7 @@ Route::group(['prefix'=>'khachhang'],function (){
 Route::post('contact-us',['as'=>'contactus','uses'=>'MailController@Contact']);
 //backend
 Route::group(['prefix'=>'admin'],function(){
-	Route::get('home',function(){
-		return view('back-end.home');
-	});
+	Route::get('home','ProductController@index');
 	Route::group(['prefix'=>'danhmuc'],function(){
 		Route::get('add',['as'=>'getaddcat','uses'=>'CategoryController@getAdd']);
 		Route::post('add',['as'=>'postaddcat','uses'=>'CategoryController@postAdd']);

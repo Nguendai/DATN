@@ -7,7 +7,7 @@
     <title>Admin </title>
     <!-- Custom CSS -->
     <link href="{!! url('asset/sb-admin-2.css') !!}" rel="stylesheet">
-    <link href="{!! url('asset/bootstrap.min.css') !!}" rel="stylesheet">
+    <link href="{!! url('asset/css/bootstrap.min.css') !!}" rel="stylesheet">
 
 </head>
 
@@ -16,8 +16,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <div class="">
-            </div>
+            @include('errors.note')
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Đăng nhập</h3>

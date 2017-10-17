@@ -13,6 +13,13 @@ use DateTime,File,Input,DB,Auth;
 
 class ProductController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth:admin_user');
+    }
+    public function index(){
+    	return view('back-end.home');
+    }
     public function getAdd(){
 	    $data=category::all();
 	    return view('back-end.products.add',compact('data'));
@@ -101,11 +108,7 @@ class ProductController extends Controller
 	    return redirect('admin/sanpham')->with('success','Đã thêm thành công !');
     }
     public function getList(){
-		    $data = product::all();
-		    foreach ($data as $key => $value) {
-		    	$a = $value->product_img->id;
-		    	dd($a);
-		    }
+		    $data = product::paginate(10);
 		    return view('back-end.products.list',compact('data'));
     }
     public function getDel($id){

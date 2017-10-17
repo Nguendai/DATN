@@ -13,7 +13,7 @@ class UserController extends Controller
 {
 public function getList(){
 	$data=Admin_users::paginate(10);
- return view('back-end.user.list',compact('data'));
+ 	return view('back-end.user.list',compact('data'));
 }
 public function getAdd(){
 	return view('back-end.user.add');
