@@ -33,8 +33,8 @@
 							<?php   echo substr( $pro_new->promo2,0,60).'...'; ?>
 						</div>
 						<div class="price">
-							<span class="price-new">${!! number_format($pro_new->price,0,",",".") !!}</span>
-							<span class="price-old">$249.50</span>
+							<span class="price-new">${{$pro_new->price}}</span>
+                        	<span class="price-old">${{$pro_new->price + $pro_new->price*10/100}}</span>
 						</div>
 						@if(Auth::guest())
 						<div class="cart-button button-group " ng-controller = "modal">
@@ -89,12 +89,8 @@
 							</div>
 						</div>
 					</div>
-
-
 				</div>
-			</div>
 			<div class="product-hot">
-
 				<!-- Product #1 Starts -->
 				<h3 class="side-heading"><font><font>BEST PRODUCT</font></font></h3>
 				<div class="thumbnail wow fadeInUp " data-wow-duration="1.6s" data-wow-delay="0">
@@ -107,8 +103,8 @@
 							<?php   echo substr( $best_vote->promo2,0,60).'...'; ?>
 						</div>
 						<div class="price">
-							<span class="price-new">${!! number_format($best_vote->price,0,",",".") !!}</span>
-							<span class="price-old">$249.50</span>
+							<span class="price-new">${{$best_vote->price}}</span>
+                        	<span class="price-old">${{$best_vote->price + $best_vote->price*10/100}}</span>
 						</div>
 						@if(Auth::guest())
 						<div class="cart-button button-group " ng-controller = "modal">
@@ -164,5 +160,4 @@
 						</div>
 					</div>
 				</div>
-			</div>
 		</div><!-- end menu left -->

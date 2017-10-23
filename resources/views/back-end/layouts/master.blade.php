@@ -4,3 +4,4 @@
 @include('back-end.modules.left-nav')
 	@yield('content')
 @include('back-end.layouts.footer')
+@yield('script')

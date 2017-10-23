@@ -17,7 +17,7 @@ class MailController extends Controller
 		$content=Cart::content();
 		$oder=new oder();
 		$oder->qty=Cart::count();
-		$oder->total=Cart::total();
+		$oder->total=Cart::subtotal();
 		$oder->status= 0;
 		$oder->name= $request->name;
 		$oder->email= $request->email;
@@ -38,7 +38,7 @@ class MailController extends Controller
 		$data['info'] = $request->all();
 		
 		$data['cart'] = Cart::content();
-		$data['total']=Cart::total();
+		$data['total']=Cart::subtotal();
 		$email = $request->email;
 		Mail::send('front_end.email',$data,function($m) use ($email) {
 			$m->from('dainv320@gmail.com', 'Hóa đơn bán hàng');
@@ -69,7 +69,7 @@ class MailController extends Controller
 		$data['email']=$request->txtemail;
 		$data['text']=$request->txttext;
 		$email=$request->txtemail;
-		Mail::send('front-end.text',$data,function($m) use ($email) {
+		Mail::send('front_end.layouts.text',$data,function($m) use ($email) {
 			$m->from('dainv320@gmail.com', 'Hỗ trợ khách hàng');
 			$m->to('dainv320@gmail.com')->subject('Phản hồi khách hàng');
 		});

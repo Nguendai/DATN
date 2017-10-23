@@ -60,28 +60,18 @@
               <!-- Available Options Starts -->
               <div class="options">
                @if(Auth::guest())
-               <div class="cart-button button-group" >
-                <?php $like = DB::table('binhchon')->where('pro_id',$data->id)->where('user_id',Auth::user()->id)->first();
-                if($like){
-
-                 ?>
-                 <button type="button" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
-                  <i style="color:#ffb400" class="fa fa-heart"></i></a>
-                </button>
-                <?php }else{ ?> 
-                <button type="button" id = "like" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
-                  <a href="{{ url('khachhang/binhchon/'.$data->id) }}"> <i class="fa fa-heart"></i></a>
-                </button>
-
-                <?php   }   ?>
-                <button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
-                  <i class="fa fa-bar-chart-o"></i>
-                </button>
-                <button type="button" data-toggle="modal" data-target="#myModalDN"   class="btn btn-cart"><font><font>
-                  Add to Card
-                </font></font><i class="fa fa-shopping-cart"></i>
-              </button>
-            </div>
+                <div class="cart-button button-group " >
+                  <button type="button" class="btn btn-wishlist"  data-toggle="modal" data-target="#myModalDN"  data-toggle="tooltip" title="Thích">
+                      <i class="fa fa-heart"></i>
+                  </button>
+                  <button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
+                      <i class="fa fa-bar-chart-o"></i>
+                  </button>
+                  <button type="button"    data-toggle="modal" data-target="#myModalDN" class="btn btn-cart">
+                      Add to cart
+                      <i class="fa fa-shopping-cart"></i>
+                  </button>
+              </div>
 
             @else
             <div class="cart-button button-group" >
@@ -180,8 +170,8 @@
             <?php   echo substr( $data->promo2,0,60).'...'; ?>
           </div>
           <div class="price">
-            <span class="price-new">${!! number_format($data->price,0,",",".") !!}</span>
-            <span class="price-old">$249.50</span>
+            <span class="price-new">${{$data->price}}</span>
+            <span class="price-old">${{$data->price + $data->price*10/100}}</span>
           </div>
           @if(Auth::guest())
           <div class="cart-button button-group " ng-controller = "modal">
@@ -272,7 +262,8 @@
 @section('script')
 <script type="text/javascript">
 	$(document).ready(function(){
-    $('#send').dblclick(function(){
+    $('#send').one('click',function(event){
+      // event.preventDefault();
       var url = 'khachhang/comment/<?php echo $pro->id; ?>/<?php echo $pro->slug; ?>';
       var comment = $('#comment').val();
       $.ajax({
@@ -287,6 +278,7 @@
           $('#comment').val('');
         }
       });
+     // $(this).prop('disabled', true);
     });
     $(".xzoom").xzoom({tint: '#333', Xoffset: 15});
   });

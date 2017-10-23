@@ -31,7 +31,7 @@
                                 <input type="radio">Remember
                             </div>
                             <button type="button" id="login" ng-click="save()"  ng-disabled="log.$invalid"  class="btn btn-primary">Login</button>
-                            <p class="text-again" data-toggle="modal" data-target="#myModal1"><a href="">Quên mật khẩu</a></p>
+                            <p class="text-again"><a href="">Quên mật khẩu</a></p>
                         </div>
                     </form>
                     <div class="col-md-6 cache">

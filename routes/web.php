@@ -28,14 +28,14 @@ Route::get('auth/google', 'SocialAuthController@redirectToProviderGoogle');
 Route::get('google/callback', 'SocialAuthController@handleProviderCallbackGoogle');
 //login route
 Route::get('admin/login', ['as'  => 'getlogin', 'uses' =>'AdminAuth\LoginController@showLoginForm']);
-Route::post('admin/login', ['as'  => 'postlogin', 'uses' =>'AdminAuth\LoginController@login']);
+Route::post('admin/login', ['as'  => 'postlogin', 'uses' =>'AdminAuth\LoginController@postLogin']);
 
 Route::get('admin/register', ['as'  => 'getregister', 'uses' =>'Admin\AuthController@getRegister']);
 Route::post('admin/register', ['as'  => 'postregister', 'uses' =>'Admin\AuthController@postRegister']);
 
 Route::get('admin/password/reset', ['as'  => 'getreser', 'uses' =>'Admin\LoginController@email']);
 
-Route::get('admin/logout', ['as'  => 'getlogout', 'uses' =>'Admin\LoginController@getLogout']);
+Route::get('admin/logout', ['as'  => 'getlogout', 'uses' =>'AdminAuth\LoginController@logout']);
 
 //product_detail
 Route::get('loai-san-pham/{id}/{slug}','PagesController@getProduct');
@@ -44,10 +44,15 @@ Route::get('chi-tiet-san-pham-sl/{id}', ['as'  => 'getdetail', 'uses' =>'PagesCo
 //shopping-cart
 
 Route::get('checkout',['as'=>'checkout','uses'=>'PagesController@checkOut']);
+Route::get('contact',function(){
+	return view('front_end.contact.contact');
+});
 
 Route::get('search-pro/{parent_id}',['as'=>'searchpro','uses'=>'PagesController@searchPro']);
 //customer
 Route::group(['prefix'=>'khachhang'],function (){
+
+	Route::post('send/{id}','Chat\MessagesController@postSend');
 
 	Route::get('binhchon/{id}','PagesController@likeThis');
 
@@ -73,6 +78,8 @@ Route::post('contact-us',['as'=>'contactus','uses'=>'MailController@Contact']);
 //backend
 Route::group(['prefix'=>'admin'],function(){
 	Route::get('home','ProductController@index');
+	Route::get('send/{id}','Chat\MessagesController@admin');
+	Route::post('send/{id}','Chat\MessagesController@adminPostSend');
 	Route::group(['prefix'=>'danhmuc'],function(){
 		Route::get('add',['as'=>'getaddcat','uses'=>'CategoryController@getAdd']);
 		Route::post('add',['as'=>'postaddcat','uses'=>'CategoryController@postAdd']);

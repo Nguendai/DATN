@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="{!! url('front/css/search.css') !!}">
     <link rel="stylesheet" href="{!! url('front/dist/xzoom.css') !!}" media="all">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet">
+    <script type="text/javascript" src="{!! url('front/vendor/bootstrap.js') !!}"></script>
+  <script src="{{url('front/vendor/jquery.min.js')}}"></script>
+   
     
 </head>
 <body ng-app="angularAqua">
@@ -30,7 +32,7 @@
                 <div class="right" ng-controller = "modal" >
                     <ul >
                         <li>
-                            <a href="index.html">
+                            <a href="url('/')">
                                 <i class="fa fa-home" title="Home"></i>
                                 <span class="hidden-sm hidden-xs">
                                    Home
@@ -46,7 +48,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{url('/contact')}}">
                                 <i class="fa fa-phone" title="Wish List"></i>
                                 <span class="hidden-sm hidden-xs">
                                     Contact
@@ -157,7 +159,7 @@
                                             echo $total1;
                                              ?> </td>
                                             <td class="text-center">
-                                                <a href="">
+                                                <a href="{!! url('khachhang/delete-item/'.$data->rowId) !!}">
                                                     <i class="fa fa-times"></i>
                                                 </a>
                                             </td>

@@ -5,6 +5,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Facades\Socialite;
 use DB;
 
 class LoginController extends Controller
@@ -40,9 +41,10 @@ class LoginController extends Controller
     }
     public function showLoginForm()
     {
-        return view('back-end.login');
+        return view('back-end.auth.login');
     }
-     public function login(Request $request)
+
+     public function postLogin(Request $request)
     {
       // Validate the form data
       $this->validate($request, [

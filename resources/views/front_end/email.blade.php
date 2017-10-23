@@ -32,12 +32,12 @@
                     <td>{{$data->name}}</td>
                     <td>{{$data->price}}</td>
                     <td>{{$data->qty}}</td>
-                    <td>{!! number_format($data->price * $data->qty,0,",",".") !!}đ </td>
+                    <td>${!! $data->price * $data->qty !!} </td>
                 </tr>
                 @endforeach
                 <tr>
                     <td colspan="3">Tổng tiền:</td>
-                    <td style="color:red;font-size: 24px;font-weight: bold">{!! $total !!} đ</td>
+                    <td style="color:red;font-size: 24px;font-weight: bold">${!! $total !!} </td>
                 </tr>
             </table>
         </div>

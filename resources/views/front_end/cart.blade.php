@@ -96,34 +96,43 @@
 							<form class="form-horizontal" action="khachhang/send" method="post" accept-charset="utf-8">
 								<div class="form-group">
 									<label for="inputFname" class="col-sm-3 control-label">First Name :</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" name="name" id="inputFname" placeholder="First Name">
+									<div class="col-sm-6">
+										<input type="text" class="form-control" name="name" id="inputFname" placeholder="First Name"  required>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="inputLname" class="col-sm-3 control-label">Last Name :</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control"  id="inputLname" placeholder="Last Name">
+									<div class="col-sm-6">
+										<input type="text" class="form-control"  id="inputLname" placeholder="Last Name" required>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="inputEmail" class="col-sm-3 control-label">Email :</label>
-									<div class="col-sm-9">
-										<input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email">
+									<div class="col-sm-6">
+										<input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email" required>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="inputPhone" class="col-sm-3 control-label">Phone :</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" name="phone" id="inputPhone" placeholder="Phone">
+									<div class="col-sm-6">
+										<input type="text" class="form-control" name="phone" id="inputPhone" placeholder="Phone" required>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="inputAddress1" class="col-sm-3 control-label">Address :</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" name="address" id="inputAddress" placeholder="Address">
+									<div class="col-sm-6">
+										<input type="text" class="form-control" name="address" id="inputAddress" placeholder="Address" required>
 									</div>
 								</div>
+								 @if(Auth::guest())
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-9">
+                                            <button data-toggle="modal" data-target="#myModalDN" class="btn btn-warning">
+                                                Pay Shopping
+                                            </button>
+                                        </div>
+								</div>
+								@else
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-9">
                                             <button type="submit" class="btn btn-warning">
@@ -131,6 +140,7 @@
                                             </button>
                                         </div>
 								</div>
+								@endif
 							</form>
 					
 					<!-- Form Ends -->
