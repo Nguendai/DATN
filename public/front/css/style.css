@@ -5,6 +5,15 @@
 .thumbnail button.btn.btn-wishlist a {
     color: white;
 }
+.address {
+    margin-top: 75px;
+}
+.contact_form.col-lg-5.col-md-6.col-sm-12.col-xs-12 {
+    margin-bottom: 11px;
+}
+.contact_form input.form-control {
+    position: inherit;
+}
 
 .thumbnail button.btn.btn-wishlist a:hover {
     color: #ffb400;
@@ -51,7 +60,8 @@
     color: #ffffff;
     border: 1px solid #ffb400;
 }
-#tiishop_contact-us #contact-us-nav a {
+#tiishop_contact-us #contact-us-nav p:hover {cursor: pointer;}
+#tiishop_contact-us #contact-us-nav p {
     font-weight: 700;
     font-size: 14px;
     display: inline-block;

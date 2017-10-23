@@ -7,7 +7,7 @@
             <div class="col-md-2 col-sm-6">
                 <h5>Information</h5>
                 <ul>
-                    <li><a href="">About Us</a></li>
+                    <li><a href="{{url('contact')}}">About Us</a></li>
                     <li><a href="#">Delivery Information</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms &amp; Conditions</a></li>
@@ -17,10 +17,10 @@
             <div class="col-md-2 col-sm-6">
                 <h5>Follow Us</h5>
                 <ul>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
+                    <li><a href="https://www.facebook.com/">Facebook</a></li>
+                    <li><a href="https://twitter.com/?lang=vi">Twitter</a></li>
                     <li><a href="#">RSS</a></li>
-                    <li><a href="#">YouTube</a></li>
+                    <li><a href="https://youtobes.com">YouTube</a></li>
                 </ul>
             </div>
 
@@ -95,18 +95,22 @@
 @include('front_end.layouts.contact-us')
 <!--  end product list -->
 <!-- 2 Column Banners Starts -->
-<script type="text/javascript" src="{!! url('front/vendor/bootstrap.js') !!}"></script>
-<script src="{!! url('front/vendor/jquery-3.2.1.js') !!}"></script>
-<script type="text/javascript" src="{!! url('front/vendor/jquery.js') !!}"></script>
-<script src="{!! url('front/dist/xzoom.min.js') !!}" type="text/javascript" ></script>
-<script type="text/javascript" src="{!! url('front/js/index.js') !!}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js" ></script>
+
+
 <script type="text/javascript" src="{!! url('front/vendor/angular.min.js') !!}"></script>
 <script type="text/javascript" src="{!! url('front/js/foundation.min.js') !!}"></script>
 <script type="text/javascript" src="{!! url('front/js/setup.js') !!}"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+<script src="{!! url('front/dist/xzoom.min.js') !!}" type="text/javascript" ></script>
+
+ <!-- <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+<script type="text/javascript" src="{!! url('front/js/index.js') !!}"></script>
 </body>
 
-<script>
-  
+<!-- <script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
 </script>
+ -->
 </html>

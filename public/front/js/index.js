@@ -74,9 +74,7 @@ app.controller('login',['$scope','$http',function ($scope,$http) {
         });
     }
     $scope.register = function(){
-        var data = new FormData();
-        console.log(1); 
-        console.log($scope.regi.name);  
+        var data = new FormData();  
         $scope.regi.name = $scope.regi.name?$scope.regi.name:'';
         $scope.regi.password = $scope.regi.password?$scope.regi.password:'';
         $scope.regi.password_c = $scope.regi.password_c?$scope.regi.password_c:'';
@@ -94,13 +92,20 @@ app.controller('login',['$scope','$http',function ($scope,$http) {
             headers :{'Content-Type':undefined},
         }).then(function(response){
            if(response['data']['code'] == 100){
-                $('#myModalDK').modal('hide');
-                sweetAlert("Success", "New member was added!", "success");
+                // $('#myModalDK').modal('hide');
+                $('#singup-error').html('');
+                location.reload();
            }
         },function(error){
+            var b;
+           if(error.data.name){
+                b =  error.data.name;
+           }else{
+             b = error.data.email
+           }
             var a ='<div class="alert alert-danger">'+
                     '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                    '<strong>Danger!</strong>'+error.data+'</div>'
+                    '<strong>Danger!</strong>'+b+'</div>'
             $('#singup-error').html(a);
         });
     }

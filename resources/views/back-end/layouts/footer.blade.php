@@ -1,12 +1,13 @@
-
-	<script src="{!!url('asset/js/jquery-1.11.1.min.js')!!}"></script>
-	<script src="{!!url('asset/js/bootstrap.min.js')!!}"></script>
-	<script src="{!!url('asset/js/chart.min.js')!!}"></script>
+<script src="{!!url('asset/js/bootstrap.min.js')!!}"></script>
+	<!-- <script src="{!!url('asset/js/chart.min.js')!!}"></script>
 	<script src="{!!url('asset/js/chart-data.js')!!}"></script>
 	<script src="{!!url('asset/js/easypiechart.js')!!}"></script>
-	<script src="{!!url('asset/js/easypiechart-data.js')!!}"></script>
+	<script src="{!!url('asset/js/easypiechart-data.js')!!}"></script> -->
 	<script src="{!!url('asset/js/bootstrap-datepicker.js')!!}"></script>
-	<script type='text/javascript' src='{!!url('asset/js/script.js')!!}'></script>
+	<!-- <script type='text/javascript' src='{!!url("asset/js/script.js")!!}'></script> -->
+@include('back-end.layouts.contact')
+	
+	
 	<script>
 		function xacnhan(msg) {
 			if (window.confirm(msg)) {
@@ -35,6 +36,18 @@
 		$(window).on('resize', function () {
 		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
 		})
+    	$(document).ready(function(){
+         $('.__click').on('click',function () {
+            $('#contact-us-main').show();
+            $(this).hide();
+            $('.__close').show();
+        });
+        $('.__close').on('click',function () {
+            $('#contact-us-main').hide();
+            $(this).hide();
+            $('.__click').show();
+        });
+    	});
 	</script>	
 </body>
 

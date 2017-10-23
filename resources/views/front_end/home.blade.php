@@ -37,8 +37,8 @@
                         <?php   echo substr( $data->promo2,0,60).'...'; ?>
                     </div>
                     <div class="price">
-                        <span class="price-new">${!! number_format($data->price,0,",",".") !!}</span>
-                        <span class="price-old">$249.50</span>
+                        <span class="price-new">${{$data->price}}</span>
+                        <span class="price-old">${{$data->price + $data->price*10/100}}</span>
                     </div>
                     @if(Auth::guest())
                     <div class="cart-button button-group " ng-controller = "modal">
@@ -133,8 +133,8 @@
                             <?php   echo substr( $data->promo2,0,30).'...'; ?>
                         </div>
                         <div class="price">
-                            <span class="price-new">${!! number_format($data->price,0,",",".") !!}</span>
-                            <span class="price-old">$249.50</span>
+                            <span class="price-new">${{$data->price}}</span>
+                        <span class="price-old">${{$data->price + $data->price*10/100}}</span>
                         </div>
                         @if(Auth::guest())
                         <div class="cart-button button-group " >

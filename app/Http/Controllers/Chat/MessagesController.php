@@ -12,15 +12,14 @@ use App\Listeners\ChatEvent;
 class MessagesController extends Controller
 {
     public function index($id){
-      $group = DB::table('group_messages')->where('id_user',$id)->first();
-      $message = DB::table('messages')->where('id_group',$group->id)->get();
+      $group = DB::table('group_messages')->where('user_id',$id)->first();
+      $message = DB::table('messages')->where('group_id',$group->id)->get();
       return  view('chat',compact('message'));
     }
     public function admin($id){
-        $group = DB::table('group_messages')->where('id_user',$id)->first();
-        $message = DB::table('messages')->where('id_group',$group->id)->get();
-
-        return  view('admin',compact('message'));
+        $group = DB::table('group_messages')->where('user_id',$id)->first();
+        $message = DB::table('messages')->where('group_id',$group->id)->orderBy('id','desc')->paginate(5);
+        return  response()->json($message);
     }
     public function postSend(Request $req,$id){
         $user = DB::table('users')->where('id',$id)->first();
@@ -43,15 +42,15 @@ class MessagesController extends Controller
     	return response()->json($message);
     }
     public function adminPostSend(Request $req,$id){
-        $group = DB::table('group_messages')->where('user_id',$id)->first();
+        $group = DB::table('group_messages')->where('id',$id)->first();
         $message = Messages::create([
-            'group_id' =>$group->id,
+            'group_id' =>$id,
             'author' => 'Admin',
             'content' => $req->content,
         ]);
         event(
-            $e  = new RedisEvent($message)
+            $e  = new ChatEvent($message)
         );
-        return  redirect()->back();
+        return response()->json($message);
     }
 }

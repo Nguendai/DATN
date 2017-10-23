@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin </title>
     <!-- Custom CSS -->
-    <link href="{!! url('asset/sb-admin-2.css') !!}" rel="stylesheet">
-    <link href="{!! url('asset/bootstrap.min.css') !!}" rel="stylesheet">
+    <!-- <link href="{!! url('asset/sb-admin-2.css') !!}" rel="stylesheet"> -->
+    <link href="{!! url('asset/css/bootstrap.min.css') !!}" rel="stylesheet">
 
 </head>
 
@@ -43,16 +43,6 @@
 </div>
 
 <!-- jQuery -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="dist/js/sb-admin-2.js"></script>
 
 </body>
 

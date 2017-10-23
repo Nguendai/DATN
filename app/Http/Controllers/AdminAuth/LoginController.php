@@ -20,7 +20,7 @@ class LoginController extends Controller
     |
     */
 
-    // use AuthenticatesUsers;
+    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -42,7 +42,7 @@ class LoginController extends Controller
     {
         return view('back-end.login');
     }
-     public function login(Request $request)
+     public function postLogin(Request $request)
     {
       // Validate the form data
       $this->validate($request, [

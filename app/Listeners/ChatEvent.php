@@ -9,7 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use  App\Messages;
 
-class ChatEvent
+class ChatEvent implements ShouldBroadcast
 {
     use SerializesModels;
 

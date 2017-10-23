@@ -20,24 +20,31 @@ class CustomerController extends Controller
 	
 	public function postSignUp(CustomerRequest $request){
 		try{
-			$this->validate($request,[
-				'email' => 'required|email|unique:users',
-				'name' => 'required|max:15',
-			]);
-			$cus=new User();
-			$cus->name=$request->name;
-			$cus->address='';
-			$cus->email=$request->email;
-			$cus->phone=$request->phone;
-			$cus->images='';
-			$cus->password=bcrypt($request->password);
-			$cus->created_at=new DateTime();
+
+			$cus = new User();
+			$cus->name = $request->name;
+			$cus->address = '';
+			$cus->email = $request->email;
+			$cus->phone = $request->phone;
+			$cus->images = '';
+			$cus->password = bcrypt($request->password);
+			$cus->created_at = new DateTime();
 			$cus->remember_token=$request->_token;
 			$cus->save();
-			$data =[
-				'code' => 100,
-				'message' => 'Sucess',
-			];
+			if (Auth::attempt(['email' => $cus->email, 'password' => $request->password])){
+				return response()->json([
+					'code' => 100,
+					'message' => 'Sucesss',
+					'data' => Auth::user()->name,
+				]);
+			}
+			else{
+				return response()->json([
+					'code' => 101,
+					'message'  => 'Error',
+
+				]);
+			}
 		}catch (Exception $e){
 			$data = [
 				'code' => 404,
@@ -63,6 +70,12 @@ class CustomerController extends Controller
 		}
 	}
 	public function Logout(){
+		$group = DB::table('group_messages')->where('user_id',Auth::user()->id)->first();
+		if($group){
+			DB::table('messages')->where('group_id',$group->id)->delete();
+			DB::table('group_messages')->where('user_id',Auth::user()->id)->delete();
+		}
+		
 		Session::flush();
 		Auth::logout();
 
@@ -79,12 +92,12 @@ class CustomerController extends Controller
 			$cm->save();
 			$comment = DB::table('comments')->where('id',$cm->id)->first();
 			$data = '<ul class="clearfix">
-	         <li class="m-font fz-18 mb-5">
-	          '.$comment->name.
-	         '</li>
-	         <li>'.$comment->comment.'</li>
-	         <li class="color-gray_8 pull-right">'.$comment->created_at.'</li>
-	       </ul>';
+			<li class="m-font fz-18 mb-5">
+			'.$comment->name.
+			'</li>
+			<li>'.$comment->comment.'</li>
+			<li class="color-gray_8 pull-right">'.$comment->created_at.'</li>
+			</ul>';
 			return $data;
 		}
 		else{
@@ -122,7 +135,7 @@ class CustomerController extends Controller
 		}
 	}
 	public function getList(){
-		$data=User::paginate(3);
+		$data=User::paginate(10);
 		return view('back-end.customers.list',compact('data'));
 	}
 	public function getDel($id){
