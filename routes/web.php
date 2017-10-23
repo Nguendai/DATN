@@ -13,10 +13,10 @@
 Route::get('/test', function(){
    return abort(404);
 });
+
 Route::get('/', ['as'  => 'index', 'uses' =>'PagesController@getHome']);
 
 Route::get('search', ['as'  => 'getsearch', 'uses' =>'MailController@getSearch']);
-Route::get('search-pro', ['as'  => 'getsearch', 'uses' =>'MailController@getSearchPro']);
 
 
 Route::Auth();
@@ -51,18 +51,15 @@ Route::get('contact',function(){
 Route::get('search-pro/{parent_id}',['as'=>'searchpro','uses'=>'PagesController@searchPro']);
 //customer
 Route::group(['prefix'=>'khachhang'],function (){
-
+	Route::get('resetPassword','MailController@showForm');
+	Route::post('resetPassword','MailController@resetPassword');
 	Route::post('send/{id}','Chat\MessagesController@postSend');
 
 	Route::get('binhchon/{id}','PagesController@likeThis');
 
 	Route::get('getcart/{id}','PagesController@addCart');
-	// Route::get('signup',['as'=>'getsignup','uses'=>'CustomerController@getSignUp']);
 	Route::post('signup',['as'=>'postsignup','uses'=>'CustomerController@postSignUp']);
 	Route::post('login',['as'=>'postlogin','uses'=>'CustomerController@postLogin']);
-	
-	Route::get('forgot',['as'=>'getforgot','uses'=>'CustomerController@getForgot']);
-	Route::post('forgot',['as'=>'postforgot','uses'=>'CustomerController@postForgot']);
 	Route::post('comment/{id}/{slug}','CustomerController@postComment');
 	
 	Route::get('logout',['as'=>'logout','uses'=>'CustomerController@Logout']);
@@ -76,7 +73,7 @@ Route::group(['prefix'=>'khachhang'],function (){
 //contact-us
 Route::post('contact-us',['as'=>'contactus','uses'=>'MailController@Contact']);
 //backend
-Route::group(['prefix'=>'admin'],function(){
+Route::group(['prefix'=>'admin','middleware'=>'CheckAdmin'],function(){
 	Route::get('home','ProductController@index');
 	Route::get('send/{id}','Chat\MessagesController@admin');
 	Route::post('send/{id}','Chat\MessagesController@adminPostSend');
@@ -118,7 +115,7 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('edit/{id}',['as'=>'getedituser','uses'=>'UserController@getEdit']);
 		Route::post('edit/{id}',['as'=>'postedituser','uses'=>'UserController@postEdit']);
 	});
-	Route::group(['prefix'=>'khachhang'],function(){
+	Route::group(['prefix'=>'khachhang','middleware' =>'CheckLevel'],function(){
 		
 		Route::get('/',['as'=>'getlistcus','uses'=>'CustomerController@getList']);
 		

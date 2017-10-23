@@ -21,11 +21,7 @@
         </div>
     </div>
 
-<script type="text/javascript" src="{!! url('front/vendor/jquery.js') !!}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js" ></script>
-    <!-- <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script> -->
-
-
     <script  type="text/javascript">
         var socket = io('http://localhost:6001');
         socket.on('chat:message',function(data){
@@ -51,7 +47,6 @@
                   type:'POST',
                   success: function(response){
                     var data = JSON.parse(response);
-                    // $('#messages').append('<p><strong>'+data['author']+'</strong>:'+data['content']+'</p>');
                     $('#content').val('');
                 }
             });

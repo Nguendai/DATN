@@ -6,6 +6,16 @@ p.info {
     font-size: 21px;
     color: blue;
 }
+.resetPass {
+    width: 45%;
+    margin: auto;
+    background: white;
+    padding: 10px;
+    margin-bottom: 13px;
+}
+.resetPass input#pwd {
+    position: inherit;
+}
 
 .__success {
     border: 1px solid #00d8a3;

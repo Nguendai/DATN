@@ -79,7 +79,7 @@ class SocialAuthController extends Controller
     	$email=$socialUser->getEmail();
     	$avatar=$socialUser->getAvatar();
     	$check_user = DB::table('users')->where('email',$email)->first();
-    	if ( ! $socialProvider && !$check_user ) {
+    	if ( ! $socialProvider ) {
 			//create a new user and provider
     		$user = new User();
     		$user->name=$name;
@@ -93,12 +93,8 @@ class SocialAuthController extends Controller
     			[ 'provider_id' => $socialUser->getId(), 'provider' => 'google' ]
     		);
 
-    	} elseif( !$socialProvider) {
-    		$user->social()->create(
-    			[ 'provider_id' => $socialUser->getId(), 'provider' => 'google' ]
-    		);
-    	}else{
-    		$user = $socialUser->user;
+        }else{
+    		$user = $socialProvider->user;
     	}
     	auth()->login( $user );
 

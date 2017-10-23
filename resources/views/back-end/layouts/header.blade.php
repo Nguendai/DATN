@@ -6,7 +6,7 @@
 <title> Admin</title>
 
 <link href="{!!url('asset/css/bootstrap.css')!!}" rel="stylesheet">
-<link href="{!!url('asset/css/components.css')!!}" rel="stylesheet">
+<!-- <link href="{!!url('asset/css/components.css')!!}" rel="stylesheet"> -->
 <link href="{!!url('asset/css/datepicker3.css')!!}" rel="stylesheet">
 <!-- <link href="{!!url('assets/css/icons/icomoon/styles.css')!!}" rel="stylesheet"> -->
 
@@ -18,8 +18,9 @@
 <!--Icons-->
 <script src="{!!url('asset/js/lumino.glyphs.js')!!}"></script>
 <script src="{!!url('assets/js/core/libraries/jquery.min.js')!!}"></script>
-<!-- <script src="{!!url('assets/js/plugins/visualization/echarts/echarts.js')!!}"></script> -->
-<!-- <script>var base_url = '<?php echo URL::to('/')?>'</script> -->
+
+
+
 
 <!--[if lt IE 9]>
 <script src="asset/js/html5shiv.js"></script>

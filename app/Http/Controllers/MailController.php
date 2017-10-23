@@ -80,34 +80,28 @@ class MailController extends Controller
 		echo '";
 		</script>';
 	}
-	public function getsearchPro(Request $request){
-
-		$cat_name=category::find($request->sltcategory)->name;
-		$pro_name=category::find($request->sltproduct)->name;
-		$price=$request->sltprice;
-		if ($price==1){
-			$mobile=DB::table('products')->where('price','<','5000000')->where('cat_id',$request->sltproduct)->join('product_details','product_details.pro_id','=','products.id')->select('products.*','product_details.vga','product_details.screen','product_details.cpu','product_details.cam2')->paginate(12);
-			return view('front-end.search-pro',compact(['cat_name','pro_name','mobile','price']));
+	public function showForm(){
+		return view('front_end.login.resetPassword');
+	}
+	public function resetPassword(Request $request){
+		$GLOBALS['email'] = $request->email;
+		$count = DB::table('users')->where('email',$GLOBALS['email'])->count();
+		if ($count < 1) {
+			;
+			return redirect()->back()->with('error','Emai này không tồn tại!');
 		}
-		if ($price==5){
-			$mobile=DB::table('products')->where('price','>','20000000')->where('cat_id',$request->sltproduct)->join('product_details','product_details.pro_id','=','products.id')->select('products.*','product_details.vga','product_details.screen','product_details.cpu','product_details.cam2')->paginate(12);
-			return view('front-end.search-pro',compact(['cat_name','pro_name','mobile','price']));
+		else if($count >= 1){
+			$password = str_random(8);
+			DB::table('users')->where('email',$GLOBALS['email'])->update(['password'=>bcrypt($password)]);
+			$data = [
+				'email'=>$GLOBALS['email'],
+				'password'=>$password,
+			];
+			Mail::send('front_end.reset',$data,function($m){
+				$m->from('dainv95@gmail.com','Hỗ trợ phuc hoi mat khau');
+				$m->to($GLOBALS['email'])->subject('Mật khẩu khôi phục');
+			});
+			return redirect()->back()->with('success','Mật khẩu đã được khôi phục bạn vui lòng đăng nhập vào email để kiểm tra!');
 		}
-		if ($price==2) {
-			$price_first = 5000000;
-			$price_last  = 10000000;
-		}
-		if ($price==3) {
-			$price_first = 10000000;
-			$price_last  = 15000000;
-		}
-		if ($price==4) {
-			$price_first = 15000000;
-			$price_last  = 20000000;
-		}
-		$mobile=DB::table('products')->where('price','>',$price_first)->where('price','<',$price_last)->where('cat_id',$request->sltproduct)->join('product_details','product_details.pro_id','=','products.id')->select('products.*','product_details.vga','product_details.screen','product_details.cpu','product_details.cam2')->paginate(12);
-		return view('front-end.search-pro',compact(['cat_name','pro_name','mobile','price','price_first','price_last']));
-		
-		
 	}
 }

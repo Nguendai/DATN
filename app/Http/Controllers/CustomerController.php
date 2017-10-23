@@ -110,30 +110,7 @@ class CustomerController extends Controller
 			</script>';
 		}
 	}
-	public function getForgot(){
-		return view('front-end.forgot');
-	}
-	public function postForgot(Request $request){
-		$GLOBALS['email'] = $request->email;
-		$count = DB::table('users')->where('email',$GLOBALS['email'])->count();
-		if ($count < 1) {
-			;
-			return redirect()->back()->with('error','Emai này không tồn tại!');
-		}
-		else if($count >= 1){
-			$password = str_random(8);
-			DB::table('users')->where('email',$GLOBALS['email'])->update(['password'=>bcrypt($password)]);
-			$data = [
-				'email'=>$GLOBALS['email'],
-				'password'=>$password,
-			];
-			Mail::send('front-end.reset',$data,function($m){
-				$m->from('dainv95@gmail.com','Hỗ trợ TiiShop');
-				$m->to($GLOBALS['email'])->subject('Mật khẩu khôi phục');
-			});
-			return redirect()->back()->with('success','Mật khẩu đã được khôi phục bạn vui lòng đăng nhập vào email để kiểm tra!');
-		}
-	}
+	
 	public function getList(){
 		$data=User::paginate(10);
 		return view('back-end.customers.list',compact('data'));
