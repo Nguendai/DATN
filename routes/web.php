@@ -77,6 +77,7 @@ Route::group(['prefix'=>'admin','middleware'=>'CheckAdmin'],function(){
 	Route::get('home','ProductController@index');
 	Route::get('send/{id}','Chat\MessagesController@admin');
 	Route::post('send/{id}','Chat\MessagesController@adminPostSend');
+	Route::get('chart','Charts\Charts@index');
 	Route::group(['prefix'=>'danhmuc'],function(){
 		Route::get('add',['as'=>'getaddcat','uses'=>'CategoryController@getAdd']);
 		Route::post('add',['as'=>'postaddcat','uses'=>'CategoryController@postAdd']);
