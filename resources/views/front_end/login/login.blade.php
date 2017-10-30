@@ -17,18 +17,15 @@
                             <div class="input-group">
                                 <span class="glyphicon glyphicon-user"></span>
                                 <input type="email" id="username"  name="username" ng-model="logs.username" ng-model-options="{allowInvalid: true}" class="form-control" ng-model-options="{allowInvalid: true}" ng-maxlength="100" required placeholder="Email đăng nhập">
-                                <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.username.$error.required && log.username.$touched && log.username.$dirty ">Please,Enter Email</span>
-                                <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.username.$error.email && log.username.$dirty ">Not valid Email!</span>
+                                <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.username.$error.required && log.username.$touched && log.username.$dirty ">Email không được để trống</span>
+                                <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.username.$error.email && log.username.$dirty ">Email không đúng !</span>
                             </div>
                             <div class="input-group">
                                 <span class="glyphicon glyphicon-lock"></span>
                                 <input type="password" id="password" name="password" ng-model="logs.password" ng-model-options="{allowInvalid: true}" ng-maxlength="20" ng-minlength="6" class="form-control" required placeholder="Mật khẩu">
                                 <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.password.$error.required && log.password.$touched && log.password.$dirty ">Please,Enter Pasword</span>
-                                <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.password.$error.minlength ">Name less 6 char</span>
-                                <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.password.$error.maxlength ">Error</span>
-                            </div>
-                            <div class="col-md-6 block_rad">
-                                <input type="radio">Remember
+                                <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.password.$error.minlength ">Password 6-20 kí tự</span>
+                                <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.password.$error.maxlength ">Password 6-20 kí tự</span>
                             </div>
                             <button type="button" id="login" ng-click="save()"  ng-disabled="log.$invalid"  class="btn btn-primary">Login</button>
                             <p class="text-again"><a href="khachhang/resetPassword">Quên mật khẩu</a></p>

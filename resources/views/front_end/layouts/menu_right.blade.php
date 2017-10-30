@@ -1,7 +1,7 @@
 <!-- menu left -->
 <div class="col-md-3">
 	<ul class="nav">
-		<h3 class="side-heading"><font><font  >  Category</font></font></h3> 
+		<h3 class="side-heading"><font><font  >Danh Muc</font></font></h3> 
 		<?php
 		$data = DB::table('categories')->select('id','name','parent_id','slug')->where('parent_id',0)->get();
 		?>
@@ -22,7 +22,7 @@
 			<div class="product-new">
 
 				<!-- Product #1 Starts -->
-				<h3 class="side-heading"><font><font>Product New</font></font></h3>
+				<h3 class="side-heading"><font><font>Sản phẩm mới</font></font></h3>
 				<div class="thumbnail wow fadeInUp " data-wow-duration="1.6s" data-wow-delay="0">
 					<div class="image">
 						<img src="{!! url('uploads/products/'.$pro_new->images) !!}" width="300px" alt="product" class="img-responsive">
@@ -92,7 +92,7 @@
 				</div>
 			<div class="product-hot">
 				<!-- Product #1 Starts -->
-				<h3 class="side-heading"><font><font>BEST PRODUCT</font></font></h3>
+				<h3 class="side-heading"><font><font>Sản phẩm hot</font></font></h3>
 				<div class="thumbnail wow fadeInUp " data-wow-duration="1.6s" data-wow-delay="0">
 					<div class="image">
 						<img src="{!! url('uploads/products/'.$best_vote->images) !!}" width="300px" alt="product" class="img-responsive">

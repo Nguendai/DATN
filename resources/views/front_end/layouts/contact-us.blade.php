@@ -1,6 +1,6 @@
 <div id="tiishop_contact-us">
     <div id="contact-us-nav">
-        <p href="#" class="__click m-font"><i class="fa fa-question-circle-o mr-5 fz-16"></i><span>Support</span> </p>
+        <p href="#" class="__click m-font"><i class="fa fa-question-circle-o mr-5 fz-16"></i><span>Hộ trợ</span> </p>
     </div>
     <div id="contact-us-main">
         <div class="panel-heading clearfix __close text-center"><span class="fz-16 mt-5">Can you write message</span><a href="" class="pull-right"><i style="font-size: 18px;padding: 10px 2px 0px 0px;color: gray;" class="fa fa-times" aria-hidden="true"></i></a></div>
@@ -20,7 +20,7 @@
                     <p>Messages</p>
                     <textarea name="txttext"  cols="30" rows="10"  placeholder="Can I help you?" class="form-control" required ></textarea>
                 </div>
-                <button class="btn btn-primary pull-right" data-toggle="tooltip" title="Send!">Send</button>
+                <button class="btn btn-primary pull-right" data-toggle="tooltip" title="Send!">Gửi</button>
             </form>
         </div>
         @else
@@ -40,7 +40,7 @@
                 <p>Messages</p>
                 <textarea name="content" id="content" cols="30" rows="1"  placeholder="Can I help you?" class="form-control" required ></textarea>
             </div>
-            <button id="send" class="btn btn-primary pull-right">Send</button>
+            <button id="send" class="btn btn-primary pull-right">Gửi</button>
             <!-- </form> -->
         </div>
         @section('script')

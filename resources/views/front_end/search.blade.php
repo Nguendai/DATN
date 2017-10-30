@@ -10,7 +10,7 @@
         <section class="products-list col-md-9 container">
 
             <!-- Heading Starts -->
-            <h2 class="product-head">Search:<span class="she">
+            <h2 class="product-head">Tìm kiếm:<span class="she">
                 {{$keyword}}
 
             </span></h2>

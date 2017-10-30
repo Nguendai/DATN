@@ -20,7 +20,7 @@
 <section class="products-list">
     <div class="container">
         <!-- Heading Starts -->
-        <h2 class="product-head">Latest Products</h2>
+        <h2 class="product-head">MOBILE</h2>
         <!-- Heading Ends -->
         <!-- Products Row Starts -->
         <div class="row mobiphone ">
@@ -116,7 +116,7 @@
 <section class="products-list">
     <div class="container">
         <!-- Heading Starts -->
-        <h2 class="product-head">LAPTOP PRODUCTS</h2>
+        <h2 class="product-head">LAPTOP</h2>
         <!-- Heading Ends -->
         <!-- Products Row Starts -->
         <div class="row laptop">

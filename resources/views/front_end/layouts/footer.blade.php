@@ -5,7 +5,7 @@
         <!-- Container Starts -->
         <div class="container">
             <div class="col-md-2 col-sm-6">
-                <h5>Information</h5>
+                <h5>Thông tin</h5>
                 <ul>
                     <li><a href="{{url('contact')}}">About Us</a></li>
                     <li><a href="#">Delivery Information</a></li>
@@ -26,9 +26,9 @@
 
             <!-- Contact Us Starts -->
             <div class="col-md-3 col-sm-12 ">
-                <h5>Contact Us</h5>
+                <h5>Liên hệ</h5>
                 <ul>
-                    <li>My Company</li>
+                    <li>Công ty</li>
                     <li>
                         175- Tây Sơn- Hà Nội
                     </li>

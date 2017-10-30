@@ -19,7 +19,7 @@
                                <input type="text" name="name" id="name" ng-model="regi.name" ng-minlength="6" class="form-control"
                                required placeholder="Họ và tên">
                                <span id="helpBlock2" style="color: red"  class="help-block"
-                               ng-show=" regis.name.$error.required && regis.name.$touched && regis.name.$dirty ">Please,Enter Name</span>
+                               ng-show=" regis.name.$error.required && regis.name.$touched && regis.name.$dirty ">Nhập tên</span>
                                <span id="helpBlock2" style="color: red" class="help-block" ng-show="regis.name.$error.minlength  ">Name less 6 char</span>
                            </div>
                            <div class="input-group" id="us2">
@@ -27,8 +27,8 @@
                                <input type="password" name="password" id="password_dk" ng-model="regi.password" minlength="6" class="form-control" required
                                placeholder="Mật khẩu ( 6- 15 ) ">
                                <span id="helpBlock2" style="color: red"  class="help-block"
-                               ng-show=" regis.password.$error.required && regis.password.$touched && regis.password.$dirty ">Please,Enter Password</span>
-                               <span id="helpBlock2" style="color: red" class="help-block" ng-show="regis.password.$error.minlength  ">Name less 6 char</span>
+                               ng-show=" regis.password.$error.required && regis.password.$touched && regis.password.$dirty ">Password required!</span>
+                               <span id="helpBlock2" style="color: red" class="help-block" ng-show="regis.password.$error.minlength  ">Password 6-20 kí tự</span>
                            </div>
                            <div class="input-group" id="us3">
                                <span class="glyphicon glyphicon-lock"></span>
@@ -36,7 +36,7 @@
                                <span id="helpBlock2" style="color: red"  class="help-block" ng-show="regis.password_c.$error.required  && regis.password_c.$touched && regis.password_c.$dirty ">
                                Password required!</span>
                                <span id="helpBlock2" style="color: red"  class="help-block" ng-show="regis.password_c.$error.noMatch">
-                               Fields are not equal!</span>
+                               Password không đúng</span>
 
                            </div>
                            <div class="input-group" id="us4">
@@ -44,18 +44,18 @@
                                <input type="number" name="phone" id="phone"  ng-model="regi.phone"  class="form-control"
                                placeholder="Nhập số điện thoại" maxlength="12" required>
                                <span id="helpBlock2" style="color: red"  class="help-block"
-                               ng-show=" regis.phone.$error.required && regis.phone.$touched && regis.phone.$dirty ">Please,Enter Phone</span>
-                               <span id="helpBlock2" style="color: red" class="help-block" ng-show="regis.phone.$error.number ">Not valid number!</span>               
+                               ng-show=" regis.phone.$error.required && regis.phone.$touched && regis.phone.$dirty "> Phone required!</span>
+                               <span id="helpBlock2" style="color: red" class="help-block" ng-show="regis.phone.$error.number ">Phone không đúng</span>               
                            </div>
                            <div class="input-group" id="us5">
                                <span class="glyphicon glyphicon-envelope"></span>
                                <input type="email" name="email" id="email" ng-model="regi.email" class="form-control" required
-                               placeholder="Please, Enter email">
+                               placeholder="Nhập Email">
                                <span id="helpBlock2" style="color: red"  class="help-block"
-                               ng-show=" regis.email.$error.required && regis.email.$touched && regis.email.$dirty ">Please,Enter Email!</span>
-                               <span id="helpBlock2" style="color: red" class="help-block" ng-show="regis.email.$error.email ">Not valid Email!</span>
+                               ng-show=" regis.email.$error.required && regis.email.$touched && regis.email.$dirty ">Email required!</span>
+                               <span id="helpBlock2" style="color: red" class="help-block" ng-show="regis.email.$error.email "> Email không đúng!</span>
                            </div>
-                           <button type="button" id="submit1"  ng-click = "register()" ng-disabled="regis.$invalid" class="btn btn-primary">Register</button>
+                           <button type="button" id="submit1"  ng-click = "register()" ng-disabled="regis.$invalid" class="btn btn-primary">Đăng ký</button>
                        </div>
                    </form>
                </div>

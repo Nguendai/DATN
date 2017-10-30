@@ -18,19 +18,19 @@
 										<p>Image</p> 
 									</td>
 									<td class="text-center">
-										<p>Product Details</p>
+										<p>Chi tiết</p>
 									</td>                           
 									<td class="text-center">
-										<p>Quantity</p> 
+										<p>Số lượng</p> 
 									</td>
 									<td class="text-center">
-										<p>Price</p>
+										<p>Giá</p>
 									</td>
 									<td class="text-center">
-										<p>Total</p>
+										<p>Tổng tiền</p>
 									</td>
 									<td class="text-center">
-										<p>Action</p>
+										<p>Chọn</p>
 									</td>
 								</tr>
 							</thead>
@@ -88,20 +88,20 @@
 					<div class="panel panel-smart">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-								Shipping &amp; Taxes
+								Thông tin
 							</h3>
 						</div>
 						<div class="panel-body">
 							<!-- Form Starts -->
 							<form class="form-horizontal" action="khachhang/send" method="post" accept-charset="utf-8">
 								<div class="form-group">
-									<label for="inputFname" class="col-sm-3 control-label">First Name :</label>
+									<label for="inputFname" class="col-sm-3 control-label">Tên</label>
 									<div class="col-sm-6">
-										<input type="text" class="form-control" name="name" id="inputFname" placeholder="First Name"  required>
+										<input type="text" class="form-control" name="name" id="inputFname" placeholder="tên"  required>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputLname" class="col-sm-3 control-label">Last Name :</label>
+									<label for="inputLname" class="col-sm-3 control-label">Ho:</label>
 									<div class="col-sm-6">
 										<input type="text" class="form-control"  id="inputLname" placeholder="Last Name" required>
 									</div>
@@ -119,16 +119,16 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputAddress1" class="col-sm-3 control-label">Address :</label>
+									<label for="inputAddress1" class="col-sm-3 control-label">Địa chỉ :</label>
 									<div class="col-sm-6">
-										<input type="text" class="form-control" name="address" id="inputAddress" placeholder="Address" required>
+										<input type="text" class="form-control" name="address" id="inputAddress" placeholder="Địa chỉ" required>
 									</div>
 								</div>
 								 @if(Auth::guest())
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-9">
                                             <button data-toggle="modal" data-target="#myModalDN" class="btn btn-warning">
-                                                Pay Shopping
+                                                Đặt hàng
                                             </button>
                                         </div>
 								</div>
@@ -136,7 +136,7 @@
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-9">
                                             <button type="submit" class="btn btn-warning">
-                                                Pay Shopping
+                                                Đặt hàng
                                             </button>
                                         </div>
 								</div>
