@@ -28,7 +28,7 @@
                                 <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.password.$error.maxlength ">Password 6-20 kí tự</span>
                             </div>
                             <button type="button" id="login" ng-click="save()"  ng-disabled="log.$invalid"  class="btn btn-primary">Login</button>
-                            <p class="text-again"><a href="khachhang/resetPassword">Quên mật khẩu</a></p>
+                            <p class="text-again"><a href="khachhang/resetPassword" style="color: blue;">Quên mật khẩu</a></p>
                         </div>
                     </form>
                     <div class="col-md-6 cache">

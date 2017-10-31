@@ -269,10 +269,7 @@ span.glyphicon.glyphicon-envelope {
     color: #909295;
 }
 
-input.form-control {
-    position: absolute;
-    z-index: 1;
-}
+
 
 .modal-body input.form-control {
     padding-left: 30px;
