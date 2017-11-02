@@ -90,6 +90,7 @@ class CustomerController extends Controller
 			$cm->pro_id = $id;
 			$cm->user_id = Auth::user()->id;
 			$cm->save();
+			DB::table('products')->where('id',$id)->increment('comment', 1);
 			$comment = DB::table('comments')->where('id',$cm->id)->first();
 			$data = '<ul class="clearfix">
 			<li class="m-font fz-18 mb-5">

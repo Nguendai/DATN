@@ -17,7 +17,7 @@
 
 <!--Icons-->
 <script src="{!!url('asset/js/lumino.glyphs.js')!!}"></script>
-<script src="{!!url('assets/js/core/libraries/jquery.min.js')!!}"></script>
+<script src="{!!url('asset/js/jquery.min.js')!!}"></script>
 
 
 
