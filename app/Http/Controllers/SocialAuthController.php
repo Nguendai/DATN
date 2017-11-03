@@ -40,14 +40,14 @@ class SocialAuthController extends Controller
     	$name=$socialUser->getName();
     	$email=$socialUser->getEmail();
     	$avatar=$socialUser->getAvatar();
-
+        if($email == null){
+            $email = "NULL";
+        }
     	if ( ! $socialProvider ) {
 			//create a new user and provider
     		$user = new User();
     		$user->name=$name;
-            if(!$email){
-                $user->email='';
-            }
+
     		$user->email=$email;
     		$user->password='';
     		$user->phone='';
