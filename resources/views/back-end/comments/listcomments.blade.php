@@ -5,7 +5,7 @@
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-				<li class="active">Sản phẩm</li>
+				<li class="active">Bình luận</li>
 			</ol>
 		</div><!--/.row-->
 		<div class="row">
@@ -13,7 +13,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<div class="row">
-							<div class="col-md-8"><div class="form-group">
+							<div class="col-md-10"><div class="form-group">
 								<label for="inputLoai" class="col-sm-3 control-label"><strong> Danh sách sản phẩm </strong></label>
 								<div class="col-md-3">
 									<form action="{!! url('admin/sanpham/search') !!}" method="get">
@@ -24,11 +24,9 @@
 							</div>
 							</div>
 							<div class="col-md-2">
-									<a href="{!!url('admin/sanpham/comment')!!}" title=""><button type="button" class="btn btn-primary pull-right">Quản lý bình luận</button></a>
+									<a href="{!!url('admin/sanpham/add')!!}" title=""><button type="button" class="btn btn-primary pull-right">Quản lý bình luận</button></a>
 							</div>
-							<div class="col-md-2">
-									<a href="{!!url('admin/sanpham/add')!!}" title=""><button type="button" class="btn btn-primary pull-right">Thêm Mới Sản Phẩm</button></a>
-							</div>
+							
 						</div> 
 						
 					</div>
@@ -53,7 +51,7 @@
 										<tr>
 											<td>{!!$row->id!!}</td>
 											<td> <img src="{!!url('uploads/products/'.$row->images)!!}" alt="iphone" width="50" height="40"></td>
-											<td>{!!$row->name!!}</td>
+											<td><a href="{{url('admin/sanpham/comments/'.$row->id)}}">{!!$row->name!!}</a></td>
 											<td>{!!$row->intro!!}</td>
 											<td>{!!$row->category->name!!}</td>
 											<td>{!!$row->price!!} đ</td>

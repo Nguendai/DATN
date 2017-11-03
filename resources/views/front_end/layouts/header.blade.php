@@ -4,6 +4,8 @@
     <title> ShopPhone </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://www.thegioididong.com/Content/logo/60px.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="https://www.thegioididong.com/Content/logo/60px.png" type="image/x-icon" />
     <base href={{asset('')}}></base>
     <link rel="stylesheet" href="{!! url('front/vendor/bootstrap.css') !!}">
     <link rel="stylesheet" href="{!! url('front/vendor/font-awesome.css') !!}">

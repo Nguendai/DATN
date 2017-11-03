@@ -9,6 +9,7 @@ use App\oder_detail;
 use App\category;
 use App\product;
 use DateTime;
+use Auth;
 
 
 class MailController extends Controller
@@ -23,6 +24,7 @@ class MailController extends Controller
 		$oder->email= $request->email;
 		$oder->phone= $request->phone;
 		$oder->address= $request->address;
+		$oder->user_id = Auth::user()->id;
 		$oder->save();
 		$o_id=$oder->id;
 		
@@ -42,7 +44,7 @@ class MailController extends Controller
 		$email = $request->email;
 		Mail::send('front_end.email',$data,function($m) use ($email) {
 			$m->from('dainv320@gmail.com', 'Hóa đơn bán hàng');
-			$m->to($email)->subject('Hóa đơn mua hàng từ TiiShop');
+			$m->to($email)->subject('Hóa đơn mua hàng từ shop');
 		});
 		Cart::destroy();
 		return view('front_end.success');

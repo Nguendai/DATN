@@ -78,6 +78,7 @@ Route::group(['prefix'=>'admin','middleware'=>'CheckAdmin'],function(){
 	Route::get('send/{id}','Chat\MessagesController@admin');
 	Route::post('send/{id}','Chat\MessagesController@adminPostSend');
 	Route::get('chart','Charts\Charts@index');
+
 	Route::group(['prefix'=>'danhmuc'],function(){
 		Route::get('add',['as'=>'getaddcat','uses'=>'CategoryController@getAdd']);
 		Route::post('add',['as'=>'postaddcat','uses'=>'CategoryController@postAdd']);
@@ -91,6 +92,9 @@ Route::group(['prefix'=>'admin','middleware'=>'CheckAdmin'],function(){
 	});
 	
 	Route::group(['prefix'=>'sanpham'],function(){
+		Route::get('comment',['as'=>'getlistpcomment','uses'=>'ProductController@getListPComment']);
+		Route::get('comments/{id}',['as'=>'getlistcomment','uses'=>'ProductController@getListComment']);
+		Route::get('comments/del/{id}/{product_id}',['as'=>'getlistcomment','uses'=>'ProductController@getDelComment']);
 		Route::get('add',['as'=>'getaddpro','uses'=>'ProductController@getAdd']);
 		Route::post('add',['as'=>'postaddpro','uses'=>'ProductController@postAdd']);
 		

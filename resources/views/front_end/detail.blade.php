@@ -262,7 +262,7 @@
 @section('script')
 <script type="text/javascript">
 	$(document).ready(function(){
-    $('#send').one('click',function(event){
+    $('#send').click(function(event){
       // event.preventDefault();
       var url = 'khachhang/comment/<?php echo $pro->id; ?>/<?php echo $pro->slug; ?>';
       var comment = $('#comment').val();
