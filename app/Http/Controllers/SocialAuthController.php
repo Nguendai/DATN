@@ -45,6 +45,9 @@ class SocialAuthController extends Controller
 			//create a new user and provider
     		$user = new User();
     		$user->name=$name;
+            if(!$email){
+                $user->email='';
+            }
     		$user->email=$email;
     		$user->password='';
     		$user->phone='';
@@ -55,7 +58,7 @@ class SocialAuthController extends Controller
     			[ 'provider_id' => $socialUser->getId(), 'provider' => 'facebook' ]
     		);
 
-    	} else {
+    	}else {
     		$user = $socialProvider->user;
     	}
     	auth()->login($user );

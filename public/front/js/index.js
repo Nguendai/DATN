@@ -65,7 +65,7 @@ app.controller('login',['$scope','$http',function ($scope,$http) {
             }else{
                 var a ='<div class="alert alert-danger">'+
                     '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                    '<strong>Danger!</strong>These credentials do not match our records</div>'
+                    '<strong>Error!</strong>Tài khoản mật khẩu không hợp lệ</div>'
                 $('#danger-login').html(a);
             }
             console.log(reponse);
