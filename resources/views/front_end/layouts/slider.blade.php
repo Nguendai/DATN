@@ -11,19 +11,19 @@
             </ol>
             <div class="carousel-inner">
                 <div class="item">
-                    <img src="{!! url('front/img/slide12.jpg') !!}" alt="">
+                    <img src="{!! url('uploads/sliders/tiishop_slider2.png') !!}" alt="">
                 </div>
                 <div class="item ">
-                    <img src="{!! url('front/img/slide12.jpg') !!}" alt="">
+                    <img src="{!! url('uploads/sliders/tiishop_slider1.png') !!}" alt="">
                 </div>
                 <div class="item active">
-                    <img src="{!! url('front/img/slide12.jpg') !!}" alt="">
+                    <img src="{!! url('uploads/sliders/tiishop_slider4.png') !!}" alt="">
                 </div>
                 <div class="item">
-                    <img src="{!! url('front/img/slide12.jpg') !!}" alt="">
+                    <img src="{!! url('uploads/sliders/slider-mobile4.jpg') !!}" alt="">
                 </div>
                 <div class="item">
-                    <img src="{!! url('front/img/slide12.jpg') !!}" alt="">
+                    <img src="{!! url('uploads/sliders/slider-mobile5.png') !!}" alt="">
                 </div>
 
 

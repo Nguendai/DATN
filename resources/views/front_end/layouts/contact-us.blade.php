@@ -48,7 +48,9 @@
             var socket = io('http://localhost:6001');
             socket.on('chat:message',function(data){
             if($('#'+data.id).length == 0){
-                $('#messages').append('<p><strong>'+data.author+'</strong>:'+data.content+'</p>');
+                if(data.author == '<?php echo Auth::user()->name;  ?>'){
+                    $('#messages').append('<p><strong>'+data.author+'</strong>:'+data.content+'</p>');
+                }
             }else{
                 console.log('da co tin nhắn');
             }

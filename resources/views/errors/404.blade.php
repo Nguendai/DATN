@@ -40,7 +40,8 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">HI.</div>
+                <div class="title">404</div>
+                <h3>HI,Thank you for all</h3>
             </div>
         </div>
     </body>

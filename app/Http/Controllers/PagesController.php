@@ -54,8 +54,6 @@ class PagesController extends Controller
         $pro_related=DB::table('products')->where('cat_id',$cat_id)->where('id','<>',$id)->take(5)->get();
         return view('front_end.detail',compact(['pro','pro_related','pro_img','category','mobile']));
     }
-    
-   
     public function checkOut(){
 	    $content=Cart::content();
 	    $total=Cart::total();
