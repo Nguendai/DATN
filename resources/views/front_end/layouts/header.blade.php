@@ -34,7 +34,7 @@
                 <div class="right" ng-controller = "modal" >
                     <ul >
                         <li>
-                            <a href="url('/')">
+                            <a href="{{url('/')}}">
                                 <i class="fa fa-home" title="Home"></i>
                                 <span class="hidden-sm hidden-xs">
                                    Home
@@ -42,10 +42,10 @@
                            </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{url('khachhang/cart')}}">
                                 <i class="fa fa-newspaper-o" title="Wish List"></i>
                                 <span class="hidden-sm hidden-xs">
-                                    News
+                                    Cart
                                 </span>
                             </a>
                         </li>
