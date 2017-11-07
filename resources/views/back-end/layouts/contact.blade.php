@@ -7,7 +7,7 @@
         <div class="__inner-main clearfix">
             <!-- <form action="{!! url('contact-us') !!}" method="post"> -->
                 {{csrf_field()}}
-                <div id="messages" style="width: 100%;height: 120px;overflow-y: auto;" >
+                <div id="messages" style="width: 100%;height: 175px;overflow-y: auto; font-style: 13px" >
 
                 </div>
                 <p type="text" hidden id-group="" id="group_id"></p>
@@ -26,7 +26,7 @@
         var socket = io('http://localhost:6001');
         socket.on('chat:message',function(data){
             if($('#'+data.id).length == 0){
-                $('#messages').append('<p><strong>'+data.author+'</strong>:'+data.content+'</p>');
+                $('#messages').append('<p><strong>'+data.author+'</strong>:<i>'+data.content+'</i></p>');
             }else{
                 console.log('da co tin nhắn');
             }

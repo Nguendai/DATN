@@ -13,12 +13,11 @@ class ChatEvent implements ShouldBroadcast
 {
     use SerializesModels;
 
-    public $message;
-    public function __construct(Messages $message )
-    {
-        $this->message = $message;
-
-    }
+   public $message;
+   public function __construct(Messages $message){
+    
+     $this->message = $message;
+   }
 
     /**
      * Get the channels the event should broadcast on.

@@ -38,6 +38,7 @@
 
                <div class="form-group">
                 <p>Messages</p>
+                <p type="text" hidden  id="id_po"></p>
                 <textarea name="content" id="content" cols="30" rows="1"  placeholder="Can I help you?" class="form-control" required ></textarea>
             </div>
             <button id="send" class="btn btn-primary pull-right">Gửi</button>
@@ -47,8 +48,9 @@
         <script  type="text/javascript">
             var socket = io('http://localhost:6001');
             socket.on('chat:message',function(data){
+                var id_group = $('#id_po').html();
             if($('#'+data.id).length == 0){
-                if(data.author == '<?php echo Auth::user()->name;  ?>'){
+                if(data.author == '<?php echo Auth::user()->name;  ?>'|| data.author == "Admin" && data.group_id == id_group ){
                     $('#messages').append('<p><strong>'+data.author+'</strong>:'+data.content+'</p>');
                 }
             }else{
@@ -73,6 +75,7 @@
                         type:'POST',
                         success: function(response){
                             var data = JSON.parse(response);
+                            $('#id_po').html(data.group_id);
                             $('#content').val('');
                         }
                     });
