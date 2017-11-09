@@ -4,7 +4,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
-            <h4 class="modal-title" id="myModalLabel">Register</h4>
+            <h4 class="modal-title" id="myModalLabel">Đăng ký</h4>
         </div>
         <div class="row modal-body">
             <div class="col-md-12 " id ="singup-error">
@@ -16,23 +16,25 @@
                        <span class="col-md-12 col-md-offset-3">
                            <div class="input-group" id="us1">
                                <span class="glyphicon glyphicon-user"></span>
-                               <input type="text" name="name" id="name" ng-model="regi.name" ng-minlength="6" class="form-control"
+                               <input type="text" name="name" id="name" ng-model="regi.name" ng-minlength="6" class="form-control" ng-maxlength="20"
                                required placeholder="Họ và tên">
                                <span id="helpBlock2" style="color: red"  class="help-block"
                                ng-show=" regis.name.$error.required && regis.name.$touched && regis.name.$dirty ">Nhập tên</span>
-                               <span id="helpBlock2" style="color: red" class="help-block" ng-show="regis.name.$error.minlength  ">Name less 6 char</span>
+                               <span id="helpBlock2" style="color: red" class="help-block" ng-show="regis.name.$error.minlength  ">Tên 6-20 ký tự</span>
+                               <span id="helpBlock2" style="color: red" class="help-block" ng-show="regis.name.$error.maxlength  ">Tên 6-20 ký tự</span>
                            </div>
                            <div class="input-group" id="us2">
                                <span class="glyphicon glyphicon-lock"></span>
-                               <input type="password" name="password" id="password_dk" ng-model="regi.password" minlength="6" class="form-control" required
+                               <input type="password" name="password" id="password_dk" ng-model="regi.password" minlength="6" maxlength="6" class="form-control" required
                                placeholder="Mật khẩu ( 6- 15 ) ">
                                <span id="helpBlock2" style="color: red"  class="help-block"
                                ng-show=" regis.password.$error.required && regis.password.$touched && regis.password.$dirty ">Password required!</span>
-                               <span id="helpBlock2" style="color: red" class="help-block" ng-show="regis.password.$error.minlength  ">Password 6-20 kí tự</span>
+                               <span id="helpBlock2" style="color: red" class="help-block" ng-show="regis.password.$error.minlength  ">Password 6-15 kí tự</span>
+                               <span id="helpBlock2" style="color: red" class="help-block" ng-show="regis.password.$error.maxlength  ">Password 6-15 kí tự</span>
                            </div>
                            <div class="input-group" id="us3">
                                <span class="glyphicon glyphicon-lock"></span>
-                               <input type="password" id="password_c" name="password_c" class="form-control" ng-model="regi.password_c" placeholder="confirm password" valid-password-c="regi.password" required />
+                               <input type="password" id="password_c" name="password_c" class="form-control" ng-model="regi.password_c" placeholder="Mật khẩu ( 6- 15 ) " valid-password-c="regi.password" required />
                                <span id="helpBlock2" style="color: red"  class="help-block" ng-show="regis.password_c.$error.required  && regis.password_c.$touched && regis.password_c.$dirty ">
                                Password required!</span>
                                <span id="helpBlock2" style="color: red"  class="help-block" ng-show="regis.password_c.$error.noMatch">

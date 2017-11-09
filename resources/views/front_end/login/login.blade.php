@@ -4,7 +4,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
-            <h4 class="modal-title" id="myModalLabel">Login</h4>
+            <h4 class="modal-title" id="myModalLabel">Đăng nhập</h4>
         </div>
         <div class="row modal-body">
             <div class="col-md-12" id="danger-login">
@@ -22,10 +22,10 @@
                             </div>
                             <div class="input-group">
                                 <span class="glyphicon glyphicon-lock"></span>
-                                <input type="password" id="password" name="password" ng-model="logs.password" ng-model-options="{allowInvalid: true}" ng-maxlength="20" ng-minlength="6" class="form-control" required placeholder="Mật khẩu">
+                                <input type="password" id="password" name="password" ng-model="logs.password" ng-model-options="{allowInvalid: true}" ng-maxlength="15" ng-minlength="6" class="form-control" required placeholder="Mật khẩu">
                                 <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.password.$error.required && log.password.$touched && log.password.$dirty ">Please,Enter Pasword</span>
-                                <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.password.$error.minlength ">Password 6-20 kí tự</span>
-                                <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.password.$error.maxlength ">Password 6-20 kí tự</span>
+                                <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.password.$error.minlength ">Password 6-15 kí tự</span>
+                                <span id="helpBlock2" style="color: red" class="help-block" ng-show=" log.password.$error.maxlength ">Password 6-15 kí tự</span>
                             </div>
                             <button type="button" id="login" ng-click="save()"  ng-disabled="log.$invalid"  class="btn btn-primary">Login</button>
                             <p class="text-again"><a href="khachhang/resetPassword" style="color: blue;">Quên mật khẩu</a></p>

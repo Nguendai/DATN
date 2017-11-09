@@ -37,7 +37,7 @@
                             <a href="{{url('/')}}">
                                 <i class="fa fa-home" title="Home"></i>
                                 <span class="hidden-sm hidden-xs">
-                                   Home
+                                   Trang chủ
                                </span>
                            </a>
                         </li>
@@ -45,7 +45,7 @@
                             <a href="{{url('khachhang/cart')}}">
                                 <i class="fa fa-newspaper-o" title="Wish List"></i>
                                 <span class="hidden-sm hidden-xs">
-                                    Cart
+                                    Giỏ hàng
                                 </span>
                             </a>
                         </li>
@@ -53,7 +53,7 @@
                             <a href="{{url('/contact')}}">
                                 <i class="fa fa-phone" title="Wish List"></i>
                                 <span class="hidden-sm hidden-xs">
-                                    Contact
+                                    Liên hệ
                                 </span>
                             </a>
                         </li>
@@ -62,7 +62,7 @@
                          <a ng-click="modal1('login') " data-toggle="modal" data-target="#myModalDN" >
                             <i class="fa fa-lock" title="Login"></i>
                             <span  class="hidden-sm hidden-xs">
-                               Login
+                               Đăng nhập
                          </a>
                            @include('front_end.login.login')
                         </li>
@@ -70,7 +70,7 @@
                             <a ng-click = "modal1('register')" data-toggle="modal" data-target="#myModalDK">
                                 <i class="fa fa-unlock" title="Register"></i>
                                 <span class="hidden-sm hidden-xs">
-                                   Register
+                                   Đăng ký
                                </span>
                            </a>
                            @include('front_end.login.register')
@@ -113,7 +113,7 @@
                         {{csrf_field()}}
                         <div id="search">
                             <div class="input-group">
-                                <input type="text" class="form-control input-lg" name="txttk"  placeholder="Search">
+                                <input type="text" class="form-control input-lg" name="txttk"  placeholder="Tìm kiếm">
                                 
                                 <span class="input-group-btn">
                                     <button class="btn btn-lg" type="submit">
@@ -130,7 +130,7 @@
                 <div id="cart" class="btn-group btn-block">
                     <button type="button" data-toggle="dropdown" class="btn btn-block btn-lg dropdown-toggle">
                         <i class="fa fa-shopping-cart"></i>
-                        <span class="hidden-md">Cart:</span>
+                        <span class="hidden-md">Giỏ hàng:</span>
                         <span id="cart-total"> 
                         {!! Cart::count() !!} item</span>
                         <i class="fa fa-caret-down"></i>
@@ -169,7 +169,7 @@
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td>null</td>
+                                            <td>Trống</td>
                                         </tr>
                                     @endif
                                 </tbody>
@@ -179,7 +179,7 @@
                             <table class="table table-bordered total">
                                 <tbody>
                                     <tr>
-                                        <td class="text-right"><strong>Total</strong></td>
+                                        <td class="text-right"><strong>Tổng</strong></td>
                                         <td class="text-left">$@if(Cart::count() > 0){{$subtotal}} @else 0 @endif </td>
                                     </tr>
                                     
@@ -187,7 +187,7 @@
                             </table>
                             <p class="text-right btn-block1">
                                 <a href="khachhang/cart">
-                                    View Cart
+                                    Giỏ hàng
                                 </a>
 
                             </p>

@@ -45,7 +45,7 @@
 								<i class="fa fa-bar-chart-o"></i>
 							</button>
 							<button type="button"    data-toggle="modal" data-target="#myModalDN" class="btn btn-cart">
-								Add to cart
+								Đặt hàng
 								<i class="fa fa-shopping-cart"></i>
 							</button>
 						</div>
@@ -69,7 +69,7 @@
 									<i class="fa fa-bar-chart-o"></i>
 								</button>
 								<button type="button"  class="btn btn-cart">
-									<a href="{{ url('khachhang/getcart/'.$pro_new->id) }}">Add to cart</a>
+									<a href="{{ url('khachhang/getcart/'.$pro_new->id) }}">Đặt hàng</a>
 									<i class="fa fa-shopping-cart"></i>
 								</button>
 							</div>
@@ -115,7 +115,7 @@
 								<i class="fa fa-bar-chart-o"></i>
 							</button>
 							<button type="button"    data-toggle="modal" data-target="#myModalDN" class="btn btn-cart">
-								Add to cart
+								Đặt hàng
 								<i class="fa fa-shopping-cart"></i>
 							</button>
 						</div>
@@ -139,7 +139,7 @@
 									<i class="fa fa-bar-chart-o"></i>
 								</button>
 								<button type="button"  class="btn btn-cart">
-									<a href="{{ url('khachhang/getcart/'.$best_vote->id) }}">Add to cart</a>
+									<a href="{{ url('khachhang/getcart/'.$best_vote->id) }}">Đặt hàng</a>
 									<i class="fa fa-shopping-cart"></i>
 								</button>
 							</div>

@@ -99,13 +99,13 @@ app.controller('login',['$scope','$http',function ($scope,$http) {
         },function(error){
             var b;
            if(error.data.name){
-                b =  error.data.name;
+                b =  "Tên đã tồn tại";
            }else{
-             b = error.data.email
+             b = "Email đã tồn tại";
            }
             var a ='<div class="alert alert-danger">'+
                     '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                    '<strong>Danger!</strong>'+b+'</div>'
+                    '<strong>Error!</strong>'+b+'</div>'
             $('#singup-error').html(a);
         });
     }

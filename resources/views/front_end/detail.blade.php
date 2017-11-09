@@ -51,8 +51,9 @@
 
 
                 <li>
-                  <span><font><font>AVAILABILITY: </font></font></span> <strong
-                  class="label label-success"><font><font>IN STOCK</font></font></strong>
+                  <span><font><font>TÌNH TRẠNG: </font></font></span> <?php if($pro->qty > 0){echo '<strong
+                  class="label label-success"><font><font>Còn Hàng </font></font>';}else{ echo '<strong
+                  class="label label-danger">hết hàng';} ?></strong>
                 </li>
               </ul>
               <!-- Manufacturer Ends -->
@@ -68,7 +69,7 @@
                       <i class="fa fa-bar-chart-o"></i>
                   </button>
                   <button type="button"    data-toggle="modal" data-target="#myModalDN" class="btn btn-cart">
-                      Add to cart
+                      Đặt hàng
                       <i class="fa fa-shopping-cart"></i>
                   </button>
               </div>
@@ -92,7 +93,7 @@
                 <i class="fa fa-bar-chart-o"></i>
               </button>
               <button type="button"    class="btn btn-cart"><font><font>
-                <a href="{{ url('khachhang/getcart/'.$pro->id) }}">Add to cart</a>
+                <a href="{{ url('khachhang/getcart/'.$pro->id) }}">Đặt hàng</a>
               </font></font><i class="fa fa-shopping-cart"></i>
             </button>
           </div>
@@ -106,7 +107,7 @@
       <!-- Left Ends -->
     </div>
     <div class="product-info-box">
-      <h4 class="heading">DESCRIPTION</h4>
+      <h4 class="heading">Thông số kỹ thuật</h4>
       <div class="table-responsive">
         <table class="table">
           <tr>
@@ -154,7 +155,7 @@
 
    </div>
    <div class="product-info-box">
-    <h4 class="heading"><font><font>RELATED PRODUCTS</font></font></h4>
+    <h4 class="heading"><font><font>SẢN PHẨM</font></font></h4>
     <!-- Products Row Starts -->
     <div class="row">
      @foreach($mobile as $data)
