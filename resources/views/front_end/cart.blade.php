@@ -8,7 +8,7 @@
 				<div class="col-md-9">
 					<ol class="breadcrumb">
 						<li><a href="#"><font><font>Home</font></font></a></li>
-						<li class="active"><font><font class="">Cart</font></font></li>
+						<li class="active"><font><font class="">Giỏ hàng</font></font></li>
 					</ol>
 					<div class="table-responsive shopping-cart-table">
 						<table class="table table-bordered">
@@ -103,7 +103,7 @@
 								<div class="form-group">
 									<label for="inputLname" class="col-sm-3 control-label">Ho:</label>
 									<div class="col-sm-6">
-										<input type="text" class="form-control"  id="inputLname" placeholder="Last Name" required>
+										<input type="text" class="form-control"  id="inputLname" placeholder="Họ" required>
 									</div>
 								</div>
 								<div class="form-group">
@@ -113,9 +113,9 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputPhone" class="col-sm-3 control-label">Phone :</label>
+									<label for="inputPhone" class="col-sm-3 control-label">STD :</label>
 									<div class="col-sm-6">
-										<input type="text" class="form-control" name="phone" id="inputPhone" placeholder="Phone" required>
+										<input type="text" class="form-control" name="phone" id="inputPhone" placeholder="STD" required>
 									</div>
 								</div>
 								<div class="form-group">

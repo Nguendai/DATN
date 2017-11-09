@@ -29,6 +29,7 @@ class MailController extends Controller
 		$o_id=$oder->id;
 		
 		foreach ($content as $value) {
+			$sl = DB::table('products')->where('id',$value->id)->select('qty')->first();
 			$o_detail = new oder_detail();
 			$o_detail->pro_id = $value->id;
 			$o_detail->od_qty = $value->qty;
@@ -36,6 +37,9 @@ class MailController extends Controller
 			$o_detail->o_id = $o_id;
 			$o_detail->created_at = new datetime;
 			$o_detail->save();
+			DB::table('products')->where('id',$value->id)->update([
+				'qty' => ($sl->qty - $value->qty)
+			]);
 		}
 		$data['info'] = $request->all();
 		
@@ -62,7 +66,7 @@ class MailController extends Controller
 		else{
 			$str_keyword=str_replace(' ','%',$keyword);
 			
-			$products=DB::table('products')->where('name','like','%'.$str_keyword.'%')->join('product_details','product_details.pro_id','=','products.id')->select('products.*','product_details.*')->paginate(12);
+			$products=DB::table('products')->where([['name','like','%'.$str_keyword.'%'],['qty','>',0]])->join('product_details','product_details.pro_id','=','products.id')->select('products.*','product_details.*')->paginate(12);
 			return view('front_end.search',compact(['products','keyword']));
 		}
 	}

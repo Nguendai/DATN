@@ -42,7 +42,7 @@
                                     <i class="fa fa-bar-chart-o"></i>
                                 </button>
                                 <button type="button"  ng-click="modal1('login')"  data-toggle="modal" data-target="#myModalDN" class="btn btn-cart">
-                                    Add to cart
+                                    Mua ngay
                                     <i class="fa fa-shopping-cart"></i>
                                 </button>
                             </div>
@@ -65,7 +65,7 @@
                                     <i class="fa fa-bar-chart-o"></i>
                                 </button>
                                 <button type="button"  class="btn btn-cart">
-                                    <a href="{{ url('khachhang/getcart/'.$data->id) }}">Add to cart</a>
+                                    <a href="{{ url('khachhang/getcart/'.$data->id) }}">Mua ngay</a>
                                     <i class="fa fa-shopping-cart"></i>
                                 </button>
                             </div>

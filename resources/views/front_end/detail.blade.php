@@ -69,7 +69,7 @@
                       <i class="fa fa-bar-chart-o"></i>
                   </button>
                   <button type="button"    data-toggle="modal" data-target="#myModalDN" class="btn btn-cart">
-                      Đặt hàng
+                      Mua ngay
                       <i class="fa fa-shopping-cart"></i>
                   </button>
               </div>
@@ -93,7 +93,7 @@
                 <i class="fa fa-bar-chart-o"></i>
               </button>
               <button type="button"    class="btn btn-cart"><font><font>
-                <a href="{{ url('khachhang/getcart/'.$pro->id) }}">Đặt hàng</a>
+                <a href="{{ url('khachhang/getcart/'.$pro->id) }}">Mua ngay</a>
               </font></font><i class="fa fa-shopping-cart"></i>
             </button>
           </div>
@@ -183,7 +183,7 @@
               <i class="fa fa-bar-chart-o"></i>
             </button>
             <button type="button"  ng-click="modal1('login')"  data-toggle="modal" data-target="#myModalDN" class="btn btn-cart">
-              Add to cart
+              Mua ngay
               <i class="fa fa-shopping-cart"></i>
             </button>
           </div>
@@ -196,7 +196,7 @@
               <i class="fa fa-bar-chart-o"></i>
             </button>
             <button type="button"  class="btn btn-cart">
-              Add to cart
+              <a href="{{ url('khachhang/getcart/'.$data->id) }}">Mua ngay</a>
               <i class="fa fa-shopping-cart"></i>
             </button>
           </div>

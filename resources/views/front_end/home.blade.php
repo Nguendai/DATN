@@ -45,11 +45,11 @@
                         <button type="button" class="btn btn-wishlist" ng-click="modal1('login')" data-toggle="modal" data-target="#myModalDN"  data-toggle="tooltip" title="Thích">
                             <i class="fa fa-heart"></i>
                         </button>
-                       <!--  <button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
+                        <button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
                             <i class="fa fa-bar-chart-o"></i>
-                        </button> -->
+                        </button>
                         <button type="button"    data-toggle="modal" data-target="#myModalDN" class="btn btn-cart">
-                        Thêm vào giỏ hàng
+                        Mua ngay
                             
                             <i class="fa fa-shopping-cart"></i>
                         </button>
@@ -70,12 +70,12 @@
 
                         <?php   }   ?>
 
-                        <!-- <button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
+                        <button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
                             <i class="fa fa-bar-chart-o"></i>
-                        </button> -->
+                        </button>
                         <button type="button"  class="btn btn-cart">
                       
-                            <a href="{{ url('khachhang/getcart/'.$data->id) }}">Thêm vào giỏ hàng</a>
+                            <a href="{{ url('khachhang/getcart/'.$data->id) }}">Mua ngay</a>
                             <i class="fa fa-shopping-cart"></i>
                         </button>
                     </div>
@@ -143,9 +143,11 @@
                             <button type="button" class="btn btn-wishlist"  data-toggle="modal" data-target="#myModalDN"  data-toggle="tooltip" title="Thích">
                                 <i class="fa fa-heart"></i>
                             </button>
-                           
+                            <button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </button>
                             <button type="button"    data-toggle="modal" data-target="#myModalDN" class="btn btn-cart">
-                                Thêm vào giỏ hàng
+                                Mua ngay
                                 <i class="fa fa-shopping-cart"></i>
                             </button>
                         </div>
@@ -161,11 +163,13 @@
                             <button type="button" id="like" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
                                 <a href="{{ url('khachhang/binhchon/'.$data->id) }}"><i class="fa fa-heart"></i></a>
                             </button>
-
+                             <button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
+                            <i class="fa fa-bar-chart-o"></i>
+                            </button>
                             <?php   }   ?>
-                        
+                            
                             <button type="button"  class="btn btn-cart">
-                                <a href="{{ url('khachhang/getcart/'.$data->id) }}">Thêm vào giỏ hàng</a>
+                                <a href="{{ url('khachhang/getcart/'.$data->id) }}">Mua ngay</a>
                                 <i class="fa fa-shopping-cart"></i>
                             </button>
                         </div>

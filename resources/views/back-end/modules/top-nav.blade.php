@@ -23,7 +23,7 @@
 				</ul>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe" aria-hidden="true">Suppost</i>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe" aria-hidden="true">Hỗ trợ</i>
 							
                             <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">

@@ -18,10 +18,10 @@ use App\binhchon;
 class PagesController extends Controller
 {
     public function getHome(){
-    	$mobile=DB::table('products')->where('cat_id',1)
+    	$mobile=DB::table('products')->where([['cat_id','=',1],['qty','>',0]])
             ->join('product_details','product_details.pro_id','=','products.id')->select('products.*','product_details.*')
             ->paginate(8);
-	    $pc=DB::table('products')->where('cat_id',7)->join('product_details','product_details.pro_id','=','products.id')
+	    $pc=DB::table('products')->where([['cat_id','=',7],['qty','>',0]])->join('product_details','product_details.pro_id','=','products.id')
             ->select('products.*','product_details.*')->paginate(8);
 	    return view('front_end.home',compact(['mobile','pc']));
     }
