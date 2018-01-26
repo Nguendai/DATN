@@ -43,8 +43,8 @@
                             <div class="form-group">
                                 <label for="input-id"> Chọn Quyền </label>
                                 <select name="sltLevel" id="inputSltLevel" class="form-control">
-                                    <option <?php if ($user['level'] == 1) echo "selected"?> value="1">- Admin --</option>
-                                    <option <?php if ($user['level'] == 2) echo "selected"?> value="2">- Nhân viên --</option>
+                                    <option <?php if ($user['level'] == 2) echo "selected"?> value="2">-- Quản trị viên --</option>
+                                    <option <?php if ($user['level'] == 3) echo "selected"?> value="3">- Nhân viên --</option>
 
                                 </select>
                             </div>
@@ -52,7 +52,7 @@
                                     <div class="form-group">
                                         <label for="input-id"> Chọn Quyền </label>
                                         <select name="sltLevel" id="inputSltLevel" class="form-control" disabled>
-                                            <option selected  value="2">-- Nhân viên --</option>
+                                            <option selected  value="3">-- Nhân viên --</option>
                                         </select>
                                     </div>
                                     @endif

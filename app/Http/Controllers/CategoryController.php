@@ -29,7 +29,8 @@ class CategoryController extends Controller
     public  function  getDel($id){
     	$parent_id=category::where('parent_id',$id)->count();
     	if ($parent_id==0){
-    		$category=category::find($id);
+    		$category = category::find($id);
+            $cate_d->product()->forceDelete($id);
     		$category->delete();
     		return redirect()->route('getlistcat')->with('success','Xóa thành công');
 	    }

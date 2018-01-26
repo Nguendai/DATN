@@ -17,7 +17,7 @@ class OderController extends Controller
 	public function getListDate(Request $request){
 		$date1=$request->date1;
 		$date2=$request->date2;
-		$data=oder::where('status',1)-> whereBetween('date',[$request->date1,$request->date2])->paginate(10);
+		$data=oder::where('status',1)-> whereBetween('created_at',[$request->date1,$request->date2])->paginate(10);
 		return view('back-end.oders.list_search',compact(['data','date1','date2']));
 	}
 	//don hang moi

@@ -5,8 +5,9 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+                <div class="panel-heading">Login admin</div>
                 <div class="panel-body">
+                   @include('errors.note')
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('admin/login') }}">
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -14,7 +15,6 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
-aaaaa
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -28,7 +28,6 @@ aaaaa
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password">
-
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -53,7 +52,7 @@ aaaaa
                                     <i class="fa fa-btn fa-sign-in"></i> Đăng nhập
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Bạn đã quên mật khẩu?</a>
+                              
                             </div>
                         </div>
                     </form>

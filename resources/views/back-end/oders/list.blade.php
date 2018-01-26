@@ -50,7 +50,7 @@
 											<td>{!!$row->phone!!}</td>
 											<td>{!!$row->email!!}</td>
 											<td>{!!$row->created_at!!}</td>
-											<td>{!! number_format($row->total,0,",",".")!!}đ</td>
+											<td>${!! $row->total!!}</td>
 											<td>
 												@if($row->status ==0)
 													<span style="color:#d35400;">Chưa xác nhận</span>

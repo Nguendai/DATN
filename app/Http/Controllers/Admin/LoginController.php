@@ -18,7 +18,6 @@ class LoginController extends Controller
 		    'password' => $request->password
 	    ];
 	    if (Auth::attempt($arr)){
-	        dd($arr);
 	    	return redirect('admin/home');
 	    }
 	    else{

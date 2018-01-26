@@ -24,19 +24,17 @@ class CustomerRequest extends FormRequest
     public function rules()
     {
         return [
-	        'txtname'=>'unique:users,name',
-	        'txtemail'=>'unique:users,email',
-	        'txtpassword'=>'min:3|max:32',
-	        'txtrepassword'=>'same:txtpassword'
+	        'name'=>'unique:users,name',
+	        'email'=>'unique:users,email',
+	        'password'=>'min:3|max:32',
         ];
     }
     public function messages() {
 	   return[
-		   'txtname.unique'=>'Tên người dùng đã tồn tại',
-		   'txtemail.unique'=>'Email đăng ký đã tồn tại',
-		   'txtpassword.min'=>'Mật khẩu tối thiểu 6 ký tự',
-		   'txtpassword.max'=>'Mật khẩu tối đa 32 ký tự',
-		   'txtrepassword.same'=>'Xác nhận mật khẩu không chính xác'
+		   // 'name.unique'=>'Tên người dùng đã tồn tại',
+		   // 'email.unique'=>'Email đăng ký đã tồn tại',
+		   // 'password.min'=>'Mật khẩu tối thiểu 6 ký tự',
+		   // 'password.max'=>'Mật khẩu tối đa 32 ký tự',
 	   ];
     }
 }

@@ -42,8 +42,8 @@
                                 <label for="input-id"> Chọn Quyền </label>
                                 <select name="sltLevel" id="inputSltLevel" required class="form-control">
                                     <option value="">Chọn quyền truy cập</option>
-                                    <option  value="1" >-- Quản trị viên --</option>
-                                    <option value="2">-- Nhân viên --</option>
+                                    <option  value="2" >-- Quản trị viên --</option>
+                                    <option value="3">-- Nhân viên --</option>
                                 </select>
                             </div>
                             <input type="submit" name="btnCateAdd" class="btn btn-primary" value="Thêm thành viên" class="button" />

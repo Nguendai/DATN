@@ -13,7 +13,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<div class="row">
-							<div class="col-md-10"><div class="form-group">
+							<div class="col-md-8"><div class="form-group">
 								<label for="inputLoai" class="col-sm-3 control-label"><strong> Danh sách sản phẩm </strong></label>
 								<div class="col-md-3">
 									<form action="{!! url('admin/sanpham/search') !!}" method="get">
@@ -22,6 +22,9 @@
 									</form>
 								</div>
 							</div>
+							</div>
+							<div class="col-md-2">
+									<a href="{!!url('admin/sanpham/comment')!!}" title=""><button type="button" class="btn btn-primary pull-right">Quản lý bình luận</button></a>
 							</div>
 							<div class="col-md-2">
 									<a href="{!!url('admin/sanpham/add')!!}" title=""><button type="button" class="btn btn-primary pull-right">Thêm Mới Sản Phẩm</button></a>
