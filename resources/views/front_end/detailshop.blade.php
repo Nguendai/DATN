@@ -8,8 +8,7 @@
 
       <ol class="breadcrumb">
         <li><a href="#"><font><font>Home</font></font></a></li>
-        <li><a href="{{url('loai-san-pham/'.$shop->cat_id.'/'.$category->slug)}}"><font><font class="">{!! $category->name !!}</font></font></a></li>
-        <li class="active"><font><font class="">{{$shop->slug}}</font></font></li>
+        <li class="active"><font><font class="">{{$shop->name}}</font></font></li>
       </ol>
       <div class="row product-info">
         <!-- Left Starts -->
@@ -18,15 +17,15 @@
         </div>
         <div class="col-sm-5 images-block">
           <p>
-            <img src="{!! url('uploads/shops/'.$shop->image) !!}"  width="500px" src="{!! url('uploads/shops/'.$shop->image) !!}" xoriginal="{!! url('uploads/shops/'.$shop->image) !!}" alt="hình ảnh" class="img-responsive thumbnail xzoom">
+            <img src="{!! url('uploads/garages/'.$shop->images[0]) !!}"  width="500px" src="{!! url('uploads/garages/'.$shop->images[0]) !!}" xoriginal="{!! url('uploads/garages/'.$shop->images[0]) !!}" alt="hình ảnh" class="img-responsive thumbnail xzoom">
           </p>
           <div class="xzoom-thumbs">
-            <a href="{!! url('uploads/shops/'.$shop->image) !!}">
-              <img class="xzoom-gallery" width="75" src="{!! url('uploads/shops/'.$shop->image) !!}"  xpreview="{!! url('uploads/shops/'.$shop->image) !!}">
+            <a href="{!! url('uploads/garages/'.$shop->images[0]) !!}">
+              <img class="xzoom-gallery" width="75" src="{!! url('uploads/garages/'.$shop->images[0]) !!}"  xpreview="{!! url('uploads/garages/'.$shop->images[0]) !!}">
             </a>
             @foreach($shop->images as $data)
-            <a href="{!! url('uploads/shops/details/'.$data) !!}">
-              <img class="xzoom-gallery" width="75" src="{!! url('uploads/shops/details/'.$data) !!}">
+            <a href="{!! url('uploads/garages/'.$data) !!}">
+              <img class="xzoom-gallery" width="75" src="{!! url('uploads/garages/'.$data) !!}">
             </a>
             @endforeach
           </div>
@@ -43,163 +42,190 @@
           <!-- Manufacturer Starts -->
           <ul class="list-unstyled manufacturer">
             <li>
-              <span><font><font><b>+ email:</b> </font></font></span><font><font>{{$shop->email}}
+              <span><font><font><b><i class="fa fa-envelope"></i> Email:</b> </font></font></span><font><font style="color: #1f60c5;">{{$shop->email}}
               </font></font></li>
-              <li><span><font><font><b>+ website:</b> </font></font></span><font><font> 
-              {{$shop->website}}</font></font></li>
-              <li><span><font><font><b>+ Địa chỉ:</b> </font></font></span><font><font><i> {{$shop->address}}</i></font></font></li>
-              <li><span><b>+ Discription:</b> <font><font><i>{{$shop->discription}}</i></font></font></li>
-              </ul>
-              <!-- Manufacturer Ends -->
-              <hr>
-              <!-- Available Options Starts -->
-              <div id="ratea">
-                <input type="hidden" class="rating" id="rateing"  data-filled="fa fa-star fa-3x" data-empty="fa fa-star-o fa-3x"/>
+              <li><span><font><font><b><i class="fa fa-facebook-square"></i> Facebooks:</b> </font></font></span><font><font style="color: #1f60c5;"> 
+                {{$shop->facebook}}</font></font></li>
+                <li><span><font><font><b><i class="fa fa-location-arrow"></i> Địa chỉ:</b> </font></font></span><font><font><i style="color: #c5201f;"> {{$shop->address}}</i></font></font></li>
+                <li> <span ><i class="fa fa-clock"></i><font><font><i>{{$shop->openning}} </i></font></font></span><span>-</span><span><font><font><i>{{$shop->closing}} PM</i></font></font></span></li>
+                </ul>
+                <!-- Manufacturer Ends -->
+                <hr>
+                <!-- Available Options Starts -->
+                <div id="ratea">
+                  <input type="hidden" class="rating" id="rateing"  data-filled="fa fa-star fa-3x" data-empty="fa fa-star-o fa-3x"/>
+                </div>
               </div>
-        </div>
-        <!-- Available Options Ends -->
-        <hr>
-      </div>
-      <!-- Right Ends -->
-  <div class="product-info-box">
-      <h4 class="heading">Map</h4>
-      <div style="height: 243px">
-      <div id="map-canvas" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
-      </div>
-  </div>
-   <div class="product-info-box">
-    <h4 class="heading"><font><font>SẢN PHẨM</font></font></h4>
-    <!-- Products Row Starts -->
-    <div class="row">
-     @foreach($mobile as $data)
+              <!-- Available Options Ends -->
+              <hr>
+            </div>
+            <!-- Right Ends -->
+            <div class="product-info-box">
+              <h4 class="heading">Giới Thiệu</h4>
+              <div class="description-info" >
+                <p><?php  echo html_entity_decode($shop->discription); ?>   </p>
+              </div>
+            </div>
+            <div class="product-info-box">
+              <h4 class="heading">Dịch vụ</h4>
+              <div class="description-info" >
+               <ul>
+                @foreach($shop->service as $ser)
+                 <li>{{$ser}}</li>
+                @endforeach
+               </ul>
+             </div>
+           </div>
+           <div class="product-info-box">
+            <h4 class="heading">Khuyến mãi</h4>
+            <div class="description-info" >
+               <ul>
+                @foreach($shop->brand as $ser)
+                 <li>{{$ser}}</li>
+                @endforeach
+               </ul>
+            </div>
+          </div>
+          <div class="product-info-box">
+            <h4 class="heading">Map</h4>
+            <div style="height: 243px">
+              <div id="map-canvas" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            </div>
+          </div>
+          <!-- Products Row Ends -->
+          <div class="__comment">
+           <h4 ><span class="m-font">{{$numb_comment}}</span> Bình luận</h4>
+           <hr/>
+           <form method="post" action="" class="clearfix" >
+             {{csrf_field()}}
+             <div class="form-group">
+               <textarea name="txtcomment" id="comment" cols="20" rows="5" class="form-control" required></textarea>
+             </div>
+             @if(Auth::guest())
+             <button type= "button"  data-toggle="modal" data-target="#myModalDN" class="btn btn-primary m-font mb-20 pull-right"> GỬI</button>
+             @else
+             <input type="text" id="user_id" hidden value="{{Auth::user()->id }}"/>
+             <button type="button" id="send"  class="btn btn-primary m-font mb-20 pull-right"> GỬI</button>
+             @endif
+           </form>
+           <div class="__description mb-40">
+            @foreach($comment as $data)
+             <ul class="clearfix">
+               <li class="m-font fz-18 mb-5">
+                 {{$data->author}}
+               </li>
+               <li>{{$data->comment}}</li>
+               <li class="color-gray_8 pull-right"><?php   echo substr( $data->created_at->date,0,19); ?></li>
+             </ul>
+             @endforeach
+           </div>
+         </div>
+       </div> <!-- end  col 9 -->
+       <!-- menu right -->
+       <div class="col-md-3"></div>
+     </div>
 
-     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-      <div class="thumbnail wow fadeInUp " data-wow-duration="1.6s" data-wow-delay="0">
-        <div class="image">
-          <img src="{!! url('uploads/products/'.$data->images) !!}" width="300px" alt="product" class="img-responsive">
-        </div>
-        <div class="caption">
-          <h4><a href="{!!url('chi-tiet-san-pham/'.$data->id.'/'.$data->slug)!!}">{{$data->name}}</a></h4>
-          <div class="description">
-            <?php   echo substr($data->promo2,0,60).'...';?>
-          </div>
-          <div class="price">
-            <span class="price-new">${{$data->price}}</span>
-            <span class="price-old">${{$data->price + $data->price*10/100}}</span>
-          </div>
-          @if(Auth::guest())
-          <div class="cart-button button-group " ng-controller = "modal">
-            <button type="button" class="btn btn-wishlist" ng-click="modal1('login')" data-toggle="modal" data-target="#myModalDN"  data-toggle="tooltip" title="Thích">
-              <i class="fa fa-heart"></i>
-            </button>
-            <button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
-              <i class="fa fa-bar-chart-o"></i>
-            </button>
-            <button type="button"  ng-click="modal1('login')"  data-toggle="modal" data-target="#myModalDN" class="btn btn-cart">
-              Mua ngay
-              <i class="fa fa-shopping-cart"></i>
-            </button>
-          </div>
-          @else
-          <div class="cart-button button-group " >
-            <button type="button" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
-              <i class="fa fa-heart"></i>
-            </button>
-            <button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
-              <i class="fa fa-bar-chart-o"></i>
-            </button>
-            <button type="button"  class="btn btn-cart">
-              <a href="{{ url('khachhang/getcart/'.$data->id) }}">Mua ngay</a>
-              <i class="fa fa-shopping-cart"></i>
-            </button>
-          </div>
-          @endif
-        </div>
-        <div class="politis">
-          <div class="title">
-            <a href="{!!url('chi-tiet-san-pham/'.$data->id.'/'.$data->slug)!!}"><h4>{{$data->name}}</h4></a>
-            <ul class="list-group">
-             
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    @endforeach
-  </div>
-  <!-- Products Row Ends -->
-</div>
-</div> <!-- end  col 9 -->
-<!-- menu right -->
-@include('front_end.layouts.menu_right')
-</div>
+   </div>
+   <!--end conten-->
+   @endsection
+   @section('script')
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDD5F9Zet_TmckkgQ20Y2-NHq026f-68cw">
+   </script>
+   <script type="text/javascript">
+     salon_name = 'Mercedes-Benz Haxaco Điện Biên Phủ ';
+     salon_address = '333 Điện Biên Phủ, Q.Bình Thạnh, TP HCM';
+     var salon_url = 'http://mercedes-benz-haxaco.bonbanh.com/';
+     var glat = '10.801454';
+     var glong = '106.709982';
+     var map,
+     infowindow,                
+     marker = new Array(),
+     old_id = 0,
+     defaultLatLng = new google.maps.LatLng(glat, glong),
+     infoWindowArray = new Array(),
+     infowindow_array = new Array();
 
-</div>
-<!--end conten-->
-@endsection
-@section('script')
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDD5F9Zet_TmckkgQ20Y2-NHq026f-68cw">
-    </script>
-    <script type="text/javascript">
-   salon_name = 'Mercedes-Benz Haxaco Điện Biên Phủ ';
-      salon_address = '333 Điện Biên Phủ, Q.Bình Thạnh, TP HCM';
-      var salon_url = 'http://mercedes-benz-haxaco.bonbanh.com/';
-      var glat = '10.801454';
-      var glong = '106.709982';
-      var map,
-          infowindow,                
-          marker = new Array(),
-          old_id = 0,
-          defaultLatLng = new google.maps.LatLng(glat, glong),
-          infoWindowArray = new Array(),
-          infowindow_array = new Array();
+     function loadMarker(myLocation, myInfoWindow, id) {
+      marker[id] = new google.maps.Marker({position: myLocation, map: map, visible: true});
+      var popup = myInfoWindow;
+      infowindow_array[id] = new google.maps.InfoWindow({content: popup});
+      google.maps.event.addListener(marker[id], 'mouseover', function () {
+        if (id == old_id) return;
+        if (old_id > 0) infowindow_array[old_id].close();
+        infowindow_array[id].open(map, marker[id]);
+        old_id = id;
+      });
+      google.maps.event.addListener(infowindow_array[id], 'closeclick', function () {
+        old_id = 0;
+      });
+      console.log(map)
+    }
+    function moveToMaker(id) {
+      var location = marker[id].position;
+      map.setCenter(location);
+      if (old_id > 0) infowindow_array[old_id].close();
+      infowindow_array[id].open(map, marker[id]);
+      old_id = id;
+      console.log('da chay vao day');
+    }
+    function initialize() {
+      var mapOptions = {
+        center: defaultLatLng,
+        zoom: 16,
+        scrollwheel: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      map.setCenter(defaultLatLng);
 
-        function loadMarker(myLocation, myInfoWindow, id) {
-            marker[id] = new google.maps.Marker({position: myLocation, map: map, visible: true});
-            var popup = myInfoWindow;
-            infowindow_array[id] = new google.maps.InfoWindow({content: popup});
-            google.maps.event.addListener(marker[id], 'mouseover', function () {
-                if (id == old_id) return;
-                if (old_id > 0) infowindow_array[old_id].close();
-                infowindow_array[id].open(map, marker[id]);
-                old_id = id;
-            });
-            google.maps.event.addListener(infowindow_array[id], 'closeclick', function () {
-                old_id = 0;
-            });
-            console.log(map)
+      infoWindowArray[7895] = '<div class="map_description"><div class="map_title">' + salon_name + '</div><div>'
+      + salon_address + '</div></div>';
+      loadMarker(defaultLatLng, infoWindowArray[7895], 7895);
+
+      moveToMaker(7895);
+      console.log('da chay vao day');
+    }
+    google.maps.event.addDomListener(window, 'load', initialize());
+  </script>
+  <script type="text/javascript">
+
+   $(document).ready(function(){
+    var numb_comment = $('.m-font').html();
+
+     $('#send').click(function(event){
+
+      var url ="api/comment";
+      var  gara_id = '<?php echo $shop->id; ?>';
+      var  user_id =$('#user_id').val() ;
+      var comment = $('#comment').val();
+            $.ajax({
+        url: url,
+        data: {
+          comment:comment,
+          gara_id:gara_id,
+          user_id:user_id,
+        },
+        dataType: 'json',
+        type:'POST',
+        success: function(response){
+          numb_comment = numb_comment + 1;
+          var html = '<ul class="clearfix">'+
+               '<li class="m-font fz-18 mb-5">'+
+                 response.data.author
+               +'</li>'
+               +'<li>'+response.data.comment+'</li>'
+               +'<li class="color-gray_8 pull-right">'+response.data.created_at+'</li>'
+             '</ul>'
+          $('.__description').prepend(html);
+          $('#comment').val('');
+        },
+        error: function(error){
+          alert(error);
         }
-        function moveToMaker(id) {
-            var location = marker[id].position;
-            map.setCenter(location);
-            if (old_id > 0) infowindow_array[old_id].close();
-            infowindow_array[id].open(map, marker[id]);
-            old_id = id;
-            console.log('da chay vao day');
-        }
-        function initialize() {
-            var mapOptions = {
-                center: defaultLatLng,
-                zoom: 16,
-                scrollwheel: false,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-            map.setCenter(defaultLatLng);
-
-            infoWindowArray[7895] = '<div class="map_description"><div class="map_title">' + salon_name + '</div><div>'
-                    + salon_address + '</div></div>';
-            loadMarker(defaultLatLng, infoWindowArray[7895], 7895);
-
-            moveToMaker(7895);
-            console.log('da chay vao day');
-        }
-        google.maps.event.addDomListener(window, 'load', initialize());
-</script>
-<script type="text/javascript">
- 
-	$(document).ready(function(){
-    $(ratea).change(function(){
+      });
+     // $(this).prop('disabled', true);
+   });
+     $('#ratea').change(function(){
       var rate = $('#rateing').val();
       var shop_id =parseInt('<?php echo $shop->id?>');
       var url = 'api/rating';
@@ -214,14 +240,11 @@
         success:function(data){
           console.log(data);
         }
-        
-
-           
       });
     });
-    
-  
-  $(".xzoom").xzoom({tint: '#333', Xoffset: 15});
-  });
-</script>
-@endsection
+
+
+     $(".xzoom").xzoom({tint: '#333', Xoffset: 15});
+   });
+ </script>
+ @endsection

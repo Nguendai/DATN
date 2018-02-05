@@ -21,48 +21,8 @@
 						</ul>
 					</li>
 				</ul>
-				<ul class="user-menu">
-					<li class="dropdown pull-right">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe" aria-hidden="true">Hỗ trợ</i>
-							
-                            <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							@foreach($data as $data )
-                            <li class="abcd" dai="{{$data->id}}"><a href="#" ><i class="fa fa-btn"></i>{{$data->name}}</a></li>
-                            @endforeach
-						</ul>
-					</li>
-				</ul>
+				
 			</div>
 							
 		</div>
 	</nav>
-	@section('script')
-	<script  type="text/javascript" >
-		$(document).ready(function(){
-			$('.abcd').click(function(){
-				var a = $(this).attr('dai');
-				var url = 'send/'+a;
-				var html = "";
-				$.ajax({
-                  url: url,
-                  dataType: 'json',
-                  type:'get',
-                  success: function(response){
-                  	$('#contact-us-main').show();
-                  	$('.__close').show();
-                  	$('.__click').hide();
-                  	 // var data = JSON.parse(response);
-                  	$.each(response.data,function(key,item){
-                  		$('#group_id').attr('id-group',item['group_id']);
-                  		$('#name_kh').html(item['author']);
-                  		html +='<p><strong>'+item['author']+'</strong>:'+item['content']+'</p>';
-                  	});
-                  	$('#messages').html(html);
-                  	// $('#messages').append('<p><strong>'+data.author+'</strong>:'+data.content+'</p>');
-               	 }
-            	});
-			});
-		});
-	</script>
-	@endsection

@@ -4,8 +4,8 @@
     <title> ShopPhone </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="https://www.thegioididong.com/Content/logo/60px.png" type="image/x-icon" />
-    <link rel="shortcut icon" href="https://www.thegioididong.com/Content/logo/60px.png" type="image/x-icon" />
+    <link rel="icon" href="" type="image/x-icon" />
+    <link rel="shortcut icon" href="" type="image/x-icon" />
     <base href={{asset('')}}></base>
     <link rel="stylesheet" href="{!! url('front/vendor/bootstrap.css') !!}">
     <link rel="stylesheet" href="{!! url('front/vendor/font-awesome.css') !!}">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{!! url('front/css/search.css') !!}">
     <link rel="stylesheet" href="{!! url('front/css/search.css') !!}">
     <link rel="stylesheet" href="{!! url('front/dist/xzoom.css') !!}" media="all">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link href="{!! url('front/css/font.css') !!}" rel="stylesheet">
     <script type="text/javascript" src="{!! url('front/vendor/bootstrap.js') !!}"></script>
   <script src="{{url('front/vendor/jquery.min.js')}}"></script>
    
@@ -41,14 +41,7 @@
                                </span>
                            </a>
                         </li>
-                       <!--  <li>
-                            <a href="{{url('khachhang/cart')}}">
-                                <i class="fa fa-newspaper-o" title="Wish List"></i>
-                                <span class="hidden-sm hidden-xs">
-                                    Giỏ hàng
-                                </span>
-                            </a>
-                        </li> -->
+                     
                         <li>
                             <a href="{{url('/contact')}}">
                                 <i class="fa fa-phone" title="Wish List"></i>
@@ -137,33 +130,14 @@
         <div class="navbar-header">
             <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse"
             data-target=".navbar-cat-collapse">
-            <span class="sr-only">Phone Shop</span>
+            <span class="sr-only">Salon</span>
             <i class="fa fa-bars"></i>
         </button>
     </div>
     <!-- Nav Header Ends -->
     <!-- Navbar Cat collapse Starts -->
     <div class="collapse navbar-collapse navbar-cat-collapse" ng-controller = "navController">
-        <?php
-        $data = DB::table('categories')->select('id','name','parent_id','slug')->where('parent_id',0)->get();
-        ?>
-        <ul class="nav navbar-nav" ng-class={"show-menu":isActive}>
-            <li><a href="{{url('/')}}">Phone &amp; Shop</a></li>
-            @foreach($data as $list)
-            <li class="dropdown">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="10">
-                    {{$list->name}}
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                    <?php $data2 = DB::table('categories')->select('id','name','parent_id','slug')->where('parent_id',$list->id)->get();?>
-                    @foreach($data2 as $list2)
-                    <li><a tabindex="-1" href="{{url('loai-san-pham/'.$list2->id.'/'.$list2->slug)}}">{{$list2->name}}</a></li>
-                    @endforeach
-                </ul>
-            </li>
-            @endforeach
-
-        </ul>
+    </ul>
     </div>
     <!-- Navbar Cat collapse Ends -->
 </div>

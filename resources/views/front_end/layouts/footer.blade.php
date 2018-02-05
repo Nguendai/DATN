@@ -44,10 +44,8 @@
             <!-- Contact Us Ends -->
 
             <div class="col-md-5 col-sm-12 ">
-                <div class="bando">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.6925279073907!2d105.82395761417945!3d21.004958793967962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac80d8971297%3A0x86601fde6d3d4884!2zxJDhuqFpIGjhu41jIHRodeG7tyBs4bujaQ!5e0!3m2!1svi!2s!4v1487812759194"
-                            width="270" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
+                <!-- 
+                 -->
             </div>
 
             <!-- Contact Us Ends -->
@@ -111,26 +109,12 @@
   </div>
 <!-- Footer Section Ends -->
 <div id="scroll" class="tiishop_scroll-top"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
-<!-- @include('front_end.layouts.contact-us') -->
-<!--  end product list -->
-<!-- 2 Column Banners Starts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js" ></script>
-
-
 <script type="text/javascript" src="{!! url('front/vendor/angular.min.js') !!}"></script>
 <script type="text/javascript" src="{!! url('front/js/foundation.min.js') !!}"></script>
 <script type="text/javascript" src="{!! url('front/js/setup.js') !!}"></script>
 <script type="text/javascript" src="{!! url('front/js/ranks.js') !!}"></script>
 <script src="{!! url('front/dist/xzoom.min.js') !!}" type="text/javascript" ></script>
 
- <!-- <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <script type="text/javascript" src="{!! url('front/js/index.js') !!}"></script>
 </body>
-
-<!-- <script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
-});
-</script>
- -->
 </html>

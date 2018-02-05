@@ -19,8 +19,6 @@ public function getAdd(){
 	return view('back-end.user.add');
 }
 	public function postAdd(AddUserRequest $request){
-//		$kt_name=$kt=User::where('name',$request->txtName)->where('id','<>',$id)->count();
-//		$kt_email=$kt=User::where('name',$request->txtEmail)->where('id','<>',$id)->count();
 		$user=new Admin_users();
 		$user->name=$request->txtName;
 		$user->email=$request->txtEmail;

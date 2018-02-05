@@ -6,6 +6,12 @@ Version 1.0
 
 /*Global Styles*/
 
+span.select2.select2-container.select2-container--default {
+    width: 100% !important;
+}
+input#img {
+    visibility: hidden;
+}
 body {
 	background: #f1f4f7;
 	padding-top: 50px;

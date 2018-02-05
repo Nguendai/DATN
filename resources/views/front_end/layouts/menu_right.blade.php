@@ -34,7 +34,7 @@
 						</div>
 						<div class="price">
 							<span class="price-new">${{$pro_new->price}}</span>
-                        	<span class="price-old">${{$pro_new->price + $pro_new->price*10/100}}</span>
+							<span class="price-old">${{$pro_new->price + $pro_new->price*10/100}}</span>
 						</div>
 						@if(Auth::guest())
 						<div class="cart-button button-group " ng-controller = "modal">
@@ -51,45 +51,36 @@
 						</div>
 						@else
 						<div class="cart-button button-group " >
-							<?php $like = DB::table('binhchon')->where('pro_id',$pro_new->id)->where('user_id',Auth::user()->id)->first();
-							if($like){
-
-								?>
-								<button type="button" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
-									<i style="color:#ffb400" class="fa fa-heart"></i></a>
-								</button>
-								<?php }else{ ?> 
-								<button type="button" id = "like" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
-									<a href="{{ url('khachhang/binhchon/'.$pro_new->id) }}"> <i class="fa fa-heart"></i></a>
-								</button>
-
-								<?php   }   ?>
-
-								<button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
-									<i class="fa fa-bar-chart-o"></i>
-								</button>
-								<button type="button"  class="btn btn-cart">
-									<a href="{{ url('khachhang/getcart/'.$pro_new->id) }}">Mua hàng</a>
-									<i class="fa fa-shopping-cart"></i>
-								</button>
-							</div>
-							@endif
+							
+							<button type="button" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
+								<i style="color:#ffb400" class="fa fa-heart"></i></a>
+							</button>
+							
+							<button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
+								<i class="fa fa-bar-chart-o"></i>
+							</button>
+							<button type="button"  class="btn btn-cart">
+								<a href="{{ url('khachhang/getcart/'.$pro_new->id) }}">Mua hàng</a>
+								<i class="fa fa-shopping-cart"></i>
+							</button>
 						</div>
-						<div class="politis">
-							<div class="title">
-								<a href="{!!url('chi-tiet-san-pham/'.$pro_new->id.'/'.$pro_new->slug)!!}"><h4>{{$pro_new->name}}</h4></a>
-								<ul class="list-group">
-									<li class="">Screen: {{$pro_new->screen}}</li>
-									<li class="">OS: {{$pro_new->os}}</li>
-									<li class="">CPU: {{$pro_new->vga}}</li>
-									<li class="">RAM: {{$pro_new->ram}}</li>
-									<li class="">Camera : {{$pro_new->cam1}}, Selfie:{{$pro_new->cam2}}</li>
-									<li class="">ROM: {{$pro_new->storage}}</li>
-								</ul>
-							</div>
+						@endif
+					</div>
+					<div class="politis">
+						<div class="title">
+							<a href="{!!url('chi-tiet-san-pham/'.$pro_new->id.'/'.$pro_new->slug)!!}"><h4>{{$pro_new->name}}</h4></a>
+							<ul class="list-group">
+								<li class="">Screen: {{$pro_new->screen}}</li>
+								<li class="">OS: {{$pro_new->os}}</li>
+								<li class="">CPU: {{$pro_new->vga}}</li>
+								<li class="">RAM: {{$pro_new->ram}}</li>
+								<li class="">Camera : {{$pro_new->cam1}}, Selfie:{{$pro_new->cam2}}</li>
+								<li class="">ROM: {{$pro_new->storage}}</li>
+							</ul>
 						</div>
 					</div>
 				</div>
+			</div>
 			<div class="product-hot">
 				<!-- Product #1 Starts -->
 				<h3 class="side-heading"><font><font>Sản phẩm hot</font></font></h3>
@@ -104,7 +95,7 @@
 						</div>
 						<div class="price">
 							<span class="price-new">${{$best_vote->price}}</span>
-                        	<span class="price-old">${{$best_vote->price + $best_vote->price*10/100}}</span>
+							<span class="price-old">${{$best_vote->price + $best_vote->price*10/100}}</span>
 						</div>
 						@if(Auth::guest())
 						<div class="cart-button button-group " ng-controller = "modal">
@@ -121,43 +112,37 @@
 						</div>
 						@else
 						<div class="cart-button button-group " >
-							<?php $like = DB::table('binhchon')->where('pro_id',$best_vote->id)->where('user_id',Auth::user()->id)->first();
-							if($like){
+							
 
-								?>
-								<button type="button" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
-									<i style="color:#ffb400" class="fa fa-heart"></i></a>
-								</button>
-								<?php }else{ ?> 
-								<button type="button" id = "like" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
-									<a href="{{ url('khachhang/binhchon/'.$best_vote->id) }}"> <i class="fa fa-heart"></i></a>
-								</button>
 
-								<?php   }   ?>
+							<button type="button" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
+								<i style="color:#ffb400" class="fa fa-heart"></i></a>
+							</button>
 
-								<button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
-									<i class="fa fa-bar-chart-o"></i>
-								</button>
-								<button type="button"  class="btn btn-cart">
-									<a href="{{ url('khachhang/getcart/'.$best_vote->id) }}">Mua hàng</a>
-									<i class="fa fa-shopping-cart"></i>
-								</button>
-							</div>
-							@endif
+
+							<button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
+								<i class="fa fa-bar-chart-o"></i>
+							</button>
+							<button type="button"  class="btn btn-cart">
+								<a href="{{ url('khachhang/getcart/'.$best_vote->id) }}">Mua hàng</a>
+								<i class="fa fa-shopping-cart"></i>
+							</button>
 						</div>
-						<div class="politis">
-							<div class="title">
-								<a href="{!!url('chi-tiet-san-pham/'.$best_vote->id.'/'.$best_vote->slug)!!}"><h4>{{$best_vote->name}}</h4></a>
-								<ul class="list-group">
-									<li class="">Screen: {{$best_vote->screen}}</li>
-									<li class="">OS: {{$best_vote->os}}</li>
-									<li class="">CPU: {{$best_vote->vga}}</li>
-									<li class="">RAM: {{$best_vote->ram}}</li>
-									<li class="">Camera : {{$best_vote->cam1}}, Selfie:{{$best_vote->cam2}}</li>
-									<li class="">ROM: {{$best_vote->storage}}</li>
-								</ul>
-							</div>
+						@endif
+					</div>
+					<div class="politis">
+						<div class="title">
+							<a href="{!!url('chi-tiet-san-pham/'.$best_vote->id.'/'.$best_vote->slug)!!}"><h4>{{$best_vote->name}}</h4></a>
+							<ul class="list-group">
+								<li class="">Screen: {{$best_vote->screen}}</li>
+								<li class="">OS: {{$best_vote->os}}</li>
+								<li class="">CPU: {{$best_vote->vga}}</li>
+								<li class="">RAM: {{$best_vote->ram}}</li>
+								<li class="">Camera : {{$best_vote->cam1}}, Selfie:{{$best_vote->cam2}}</li>
+								<li class="">ROM: {{$best_vote->storage}}</li>
+							</ul>
 						</div>
 					</div>
 				</div>
+			</div>
 		</div><!-- end menu left -->

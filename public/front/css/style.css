@@ -2,7 +2,18 @@
     padding: 0px;
     margin: 0px;
 }
-
+.__comment {
+    padding: 20px;
+    background-color: white;
+    margin: 15px 0px;
+    border: 1px solid #8080804f;
+}
+.description-info {
+    background-color: white;
+    border: 1px solid #80808038;
+    padding: 10px;
+    font-size: 18px;
+}
 .fa-star:before,.rating-symbol-background.fa.fa-star-o.fa-1x {
     color: #ffb400;
 }

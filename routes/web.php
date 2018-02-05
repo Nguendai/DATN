@@ -11,19 +11,17 @@
 |
 */
 Route::group(['prefix'=>'api'],function (){
-	Route::get('/product/{page}', ['as'  => 'index', 'uses' =>'Api\ApiHomeController@getApiHome']);
+	Route::get('/garage/{page}', ['as'  => 'index', 'uses' =>'Api\ApiHomeController@getApiHome']);
 	Route::get('detail/{id}',['as'  => 'detail', 'uses' =>'Api\ApiHomeController@getApiDetail']);
 	Route::post('rating',['as' => 'rating ', 'uses'=> 'Api\ApiHomeController@postRate']);
+	Route::post('comment',['as' => 'comment ', 'uses'=> 'Api\ApiHomeController@postComment']);
+	Route::get('listcomment/{gara_id}',['as' => 'comment ', 'uses'=> 'Api\ApiHomeController@getComment']);
 });
-
 
 
 
 Route::get('/', ['as'  => 'index2', 'uses' =>'PagesController@getHome']);
 Route::get('/loaddata/view', ['as'  => 'index', 'uses' =>'PagesController@loadData']);
-
-Route::get('search', ['as'  => 'getsearch', 'uses' =>'MailController@getSearch']);
-
 
 Route::Auth();
 //face book login
@@ -46,16 +44,10 @@ Route::get('admin/logout', ['as'  => 'getlogout', 'uses' =>'AdminAuth\LoginContr
 //product_detail
 Route::get('loai-san-pham/{id}/{slug}','PagesController@getProduct');
 Route::get('chi-tiet-san-pham/{id}/{slug}', ['as'  => 'getdetail', 'uses' =>'PagesController@Detail']);
-Route::get('chi-tiet-shop/{id}/{slug}', ['as'  => 'getdetail', 'uses' =>'PagesController@DetailShop']);
+Route::get('chi-tiet-shop/{id}', ['as'  => 'getdetail', 'uses' =>'PagesController@DetailGarage']);
 Route::get('chi-tiet-san-pham-sl/{id}', ['as'  => 'getdetail', 'uses' =>'PagesController@Detail_1']);
 //shopping-cart
 
-Route::get('checkout',['as'=>'checkout','uses'=>'PagesController@checkOut']);
-Route::get('contact',function(){
-	return view('front_end.contact.contact');
-});
-
-Route::get('search-pro/{parent_id}',['as'=>'searchpro','uses'=>'PagesController@searchPro']);
 //customer
 Route::group(['prefix'=>'khachhang'],function (){
 	Route::get('resetPassword','MailController@showForm');
@@ -64,38 +56,28 @@ Route::group(['prefix'=>'khachhang'],function (){
 
 	Route::get('binhchon/{id}','PagesController@likeThis');
 
-	Route::get('getcart/{id}','PagesController@addCart');
 	Route::post('signup',['as'=>'postsignup','uses'=>'CustomerController@postSignUp']);
 	Route::post('login',['as'=>'postlogin','uses'=>'CustomerController@postLogin']);
 	Route::post('comment/{id}/{slug}','CustomerController@postComment');
 	
 	Route::get('logout',['as'=>'logout','uses'=>'CustomerController@Logout']);
-	Route::get('cart',['as'=>'giohang','uses'=>'PagesController@listCart']);
-	Route::get('delete-item/{id}',['as'=>'xoasanpham','uses'=>'PagesController@delItem']);
-	Route::post('update_cart/{id}',['as'=>'update','uses'=>'PagesController@updateCart']);
-	Route::post('send','MailController@Success');
-
-	Route::get('cap-nhat/{id}/{qty}',['as'=>'capnhatsanpham','uses'=>'PagesController@updateProductCart']);
 });
 //contact-us
 Route::post('contact-us',['as'=>'contactus','uses'=>'MailController@Contact']);
 //backend
 Route::group(['prefix'=>'admin','middleware'=>'CheckAdmin'],function(){
 	Route::get('home','ProductController@index');
-	Route::get('send/{id}','Chat\MessagesController@admin');
-	Route::post('send/{id}','Chat\MessagesController@adminPostSend');
-	Route::get('chart','Charts\Charts@index');
 
-	Route::group(['prefix'=>'danhmuc'],function(){
-		Route::get('add',['as'=>'getaddcat','uses'=>'CategoryController@getAdd']);
-		Route::post('add',['as'=>'postaddcat','uses'=>'CategoryController@postAdd']);
+	Route::group(['prefix'=>'manufacturer'],function(){
+		Route::get('add',['as'=>'getaddcat','uses'=>'ManufacturerController@getAdd']);
+		Route::post('add',['as'=>'postaddcat','uses'=>'ManufacturerController@postAdd']);
 		
-		Route::get('/',['as'=>'getlistcat','uses'=>'CategoryController@getList']);
+		Route::get('/',['as'=>'getlistcat','uses'=>'ManufacturerController@getList']);
 		
-		Route::get('del/{id}',['as'=>'getdelcat','uses'=>'CategoryController@getDel']);
+		Route::get('del/{id}',['as'=>'getdelcat','uses'=>'ManufacturerController@getDel']);
 		
-		Route::get('edit/{id}',['as'=>'geteditcat','uses'=>'CategoryController@getEdit']);
-		Route::post('edit/{id}',['as'=>'posteditcat','uses'=>'CategoryController@postEdit']);
+		Route::get('edit/{id}',['as'=>'geteditcat','uses'=>'ManufacturerController@getEdit']);
+		Route::post('edit/{id}',['as'=>'posteditcat','uses'=>'ManufacturerController@postEdit']);
 	});
 	
 	Route::group(['prefix'=>'sanpham'],function(){
@@ -113,14 +95,6 @@ Route::group(['prefix'=>'admin','middleware'=>'CheckAdmin'],function(){
 		Route::post('edit/{id}',['as'=>'geteditpro','uses'=>'ProductController@postEdit']);
 		
 		Route::get('search',['as'=>'postsearchpro','uses'=>'ProductController@getSearch']);
-		
-	});
-	Route::group(['prefix'=>'shops'],function(){
-		// Route::get('add',['as'=>'getaddshop','uses'=>'ProductController@getAdd']);
-		Route::get('add',['as'=>'postaddsho','uses'=>'ShopController@getAdd']);
-		Route::post('add',['as'=>'postaddsho','uses'=>'ShopController@postAdd']);
-		Route::get('/',['as'=>'getlistsho','uses'=>'ShopController@getList']);
-		Route::get('edit/{id}',['as'=>'geteditshop','uses'=>'ShopController@getEdit']);
 		
 	});
 	Route::group(['prefix'=>'nhanvien'],function(){
@@ -141,20 +115,10 @@ Route::group(['prefix'=>'admin','middleware'=>'CheckAdmin'],function(){
 		Route::get('del/{id}',['as'=>'getdelcus','uses'=>'CustomerController@getDel']);
 		
 	});
-	
-	Route::group(['prefix' => 'donhang'], function() {
-		
-		Route::get('/',['as'=>'getoder','uses' => 'OderController@getList']);
-		Route::get('date',['as'=>'getlistdate','uses' => 'OderController@getListDate']);
-		Route::get('new',['as'=>'getodernew','uses' => 'OderController@getListNew']);
-		
-		Route::get('del/{id}',['as'=>'getdeloder','uses' => 'OderController@getDel']);
-		Route::get('del-detail/{id}',['as'=>'getdeloderdetail','uses' => 'OderController@getDelDetail']);
-		
-		Route::get('detail/{id}',['as'=>'getdetail','uses' => 'OderController@getDetail']);
-		Route::post('detail/{id}',['as'=>'postdetail','uses' => 'OderController@postDetail']);
-		
-		Route::get('check-detail/{id}/{od_qty}/{od_id}',['as'=>'check-detail','uses' => 'OderController@checkDetail']);
+	Route::group(['prefix'=>'garage'],function(){
+		Route::get('/',['as'=>'getlistgarage','uses' => 'GarageController@getList']);
+		Route::get('add',['as'=>'getaddgarage','uses' => 'GarageController@getAdd']);
+		Route::post('add',['as'=>'postaddgarage','uses' => 'GarageController@postAdd']);
 	});
 });
 

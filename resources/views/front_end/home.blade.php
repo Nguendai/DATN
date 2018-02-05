@@ -30,10 +30,10 @@
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                 <div class="thumbnail wow fadeInUp "  data-wow-duration="1.6s" data-wow-delay="0">
                     <div class="image">
-                        <img src="{!! url('uploads/shops/'.$data->image) !!}" style="min-height: 180px" alt="product" class="img-responsive">
+                        <img src="{!! url('uploads/garages/profiles/'.$data->image) !!}" style="min-height: 180px" alt="product" class="img-responsive">
                     </div>
                     <div class="caption">
-                        <h4><a href="{!!url('chi-tiet-shop/'.$data->id.'/'.$data->slug)!!}">{{$data->name}}</a></h4>
+                        <h4><a href="{!!url('chi-tiet-shop/'.$data->id)!!}">{{$data->name}}</a></h4>
                         <div class="stars row">
                             <div class="col-md-6">
                                 <input type="hidden" class="rating" value="3" data-filled="fa fa-star fa-1x" data-empty="fa fa-star-o fa-1x"/>
@@ -55,32 +55,23 @@
                                 <i class="fa fa-map-marker"></i>
                             </button>
                             <button type="button"  class="btn btn-cart">
-
-                                <a href="{!!url('chi-tiet-shop/'.$data->id.'/'.$data->slug)!!}}">Chi tiết</a>
+                                <a href="{!!url('chi-tiet-shop/'.$data->id)!!}}">Chi tiết</a>
                                 <i class="fa fa-info" style="color: #fff" aria-hidden="true"></i>
                             </button>
 
                         </div>
-                    @else
-                    <div class="cart-button button-group " >
-                        <?php $like = DB::table('binhchon')->where('pro_id',$data->id)->where('user_id',Auth::user()->id)->first();
-                        if($like){
-
-                         ?>
-                         <button type="button" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
+                        @else
+                        <div class="cart-button button-group " >
+                            
+                           <button type="button" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
                             <i style="color:#ffb400" class="fa fa-heart"></i></a>
                         </button>
-                        <?php }else{ ?> 
-                        <button type="button" id = "like" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
-                            <a href="{{ url('khachhang/binhchon/'.$data->id) }}"> <i class="fa fa-heart"></i></a>
-                        </button>
-                        <?php   }   ?>
                         <button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ" data-toggle="modal" data-target="#myModalDN">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
                         </button>
                         <button type="button"  class="btn btn-cart">
 
-                            <a href="{!!url('chi-tiet-san-pham/'.$data->id.'/'.$data->slug)!!}}">Chi tiết</a>
+                            <a href="{!!url('chi-tiet-san-pham/'.$data->id)!!}}">Chi tiết</a>
                             <i class="fa fa-info" style="color: #fff" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -124,8 +115,8 @@
 
     $(document).ready(function(){
 
-       var page = 2;
-       $('.viewadd').click(function(){
+     var page = 2;
+     $('.viewadd').click(function(){
         var url = "api/product/"+ page;
         var html = "";
         $.ajax({
@@ -190,7 +181,7 @@
                     }
                     $('.mobiphone').append(html);
                     abc = '<script type="text/javascript" src="http://localhost/DATN/public/front/js/ranks.js">';
-                     $('.mobiphone').append(abc);
+                    $('.mobiphone').append(abc);
 
                     page ++;
                 }else{
@@ -201,8 +192,8 @@
             }
         });
 
-    });
-   });
+});
+});
 </script>
 
 

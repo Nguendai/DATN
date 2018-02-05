@@ -25,29 +25,11 @@ class AppServiceProvider extends ServiceProvider
                 $view->with(['content'=>$content,'subtotal'=>$subtotal]);
             }
         });  
-        view()->composer(['front_end.layouts.contact-us',],function($view){
-            if(!Auth::guest()){
-                $id = Auth::user()->id;
-                $messages = [];
-                $group = DB::table('group_messages')->where('user_id',$id)->first();
-                if( $group){
-                    $messages = DB::table('messages')->where('group_id',$group->id)->orderBy('id','desc')->paginate(15);
-                }
-                $view->with(['messages'=>$messages]);
-            }
-        }); 
-        view()->composer(['back-end.modules.top-nav'],function($view){
-            $group_messages = [];
-            $group_messages = DB::table('group_messages')->join('users','users.id','group_messages.user_id')->select('users.name','users.id')->get();
-            $view->with(['data'=>$group_messages]);
-        });      
+        
         view()->composer(['front_end.layouts.menu_right'],function($view){
             $best_vote = DB::table('products')
-            ->join('binhchon','binhchon.pro_id','products.id')
             ->join('product_details','products.id','product_details.pro_id')
-            ->select(DB::raw('count(*) as total, binhchon.pro_id'),'products.*','product_details.*')
-            ->groupBy('binhchon.pro_id')
-            ->orderBy('total','desc')->first();
+            ->select('products.*','product_details.*')->first();
             $pro_new = DB::table('products')
             ->join('product_details','products.id','product_details.pro_id')
             ->select('products.*','product_details.*')->orderBy('products.id','desc')->first();

@@ -1,12 +1,7 @@
 <script src="{!!url('asset/js/bootstrap.min.js')!!}"></script>
 <script src="{!!url('asset/js/jquery-1.11.1.min.js')!!}"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.js"></script> -->
-	<script src="{!!url('asset/js/chart.min.js')!!}"></script>
-	<script src="{!!url('asset/js/chart-data.js')!!}"></script>
-	<script src="{!!url('asset/js/easypiechart.js')!!}"></script>
-	<script src="{!!url('asset/js/easypiechart-data.js')!!}"></script>
-	<script src="{!!url('asset/js/bootstrap-datepicker.js')!!}"></script>\
-<!-- @include('back-end.layouts.contact') -->
+<script src="{!!url('asset/js/bootstrap-datepicker.js')!!}"></script>
 	<script>
 		function xacnhan(msg) {
 			if (window.confirm(msg)) {

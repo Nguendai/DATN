@@ -11,6 +11,8 @@
 <!-- <link href="{!!url('assets/css/icons/icomoon/styles.css')!!}" rel="stylesheet"> -->
 
 <link href="{!!url('asset/css/styles.css')!!}" rel="stylesheet">
+<link href="{!!url('asset/css/select2.min.css')!!}" rel="stylesheet">
+<link href="{!!url('asset/css/bootstrap-datepicker.css')!!}" rel="stylesheet">
 
 <!-- <link href="" rel="stylesheet" type="text/css"> -->
 <script type="text/javascript" src="{!! url('asset/plugin/ckeditor/ckeditor.js') !!}"></script>
@@ -18,6 +20,9 @@
 <!--Icons-->
 <script src="{!!url('asset/js/lumino.glyphs.js')!!}"></script>
 <script src="{!!url('asset/js/jquery.min.js')!!}"></script>
+<script src="{!!url('asset/js/moment.min.js')!!}"></script>
+<script src="{!!url('asset/js/bootstrap-datepicker.min.js')!!}"></script>
+
 
 
 

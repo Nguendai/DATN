@@ -49,18 +49,11 @@
               </div>
               @else
               <div class="cart-button button-group " >
-                <?php $like = DB::table('binhchon')->where('pro_id',$data->id)->where('user_id',Auth::user()->id)->first();
-                if($like){
-                 ?>
+                
                  <button type="button" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
                   <i style="color:#ffb400" class="fa fa-heart"></i></a>
                 </button>
-                <?php }else{ ?> 
-                <button type="button" class="btn btn-wishlist"  data-toggle="tooltip" title="Thích">
-                  <a href="{{ url('khachhang/binhchon/'.$data->id) }}"><i class="fa fa-heart"></i></a>
-                </button>
-
-                <?php   }   ?>
+                
 
                 <button type="button" class="btn btn-compare" data-toggle="tooltip" title="Biểu đồ">
                   <i class="fa fa-bar-chart-o"></i>
