@@ -48,7 +48,6 @@ class AuthController extends Controller
 
     public function postLogin(Request $request)
     {
-        dd(1);
         $this->validateLogin($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle

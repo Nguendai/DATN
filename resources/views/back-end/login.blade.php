@@ -7,7 +7,7 @@
     <title>Admin </title>
     <!-- Custom CSS -->
     <link href="{!! url('asset/sb-admin-2.css') !!}" rel="stylesheet">
-    <link href="{!! url('asset/bootstrap.min.css') !!}" rel="stylesheet">
+    <link href="{!! url('asset/css/bootstrap.min.css') !!}" rel="stylesheet">
 
 </head>
 
@@ -16,8 +16,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <div class="">
-            </div>
+            @include('errors.note')
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Đăng nhập</h3>
@@ -43,16 +42,6 @@
 </div>
 
 <!-- jQuery -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="dist/js/sb-admin-2.js"></script>
 
 </body>
 

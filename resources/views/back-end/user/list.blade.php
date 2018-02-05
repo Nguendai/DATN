@@ -41,9 +41,9 @@
 												@if($row->id==1 && $row->level ==1)
 													<span style="color:#d35400;">Quản trị hệ thống</span>
 												@elseif($row->level==2)
-													<span style="color:#27ae60;">Nhân viên</span>
-													@else
 													<span style="color:#2e97e7;">Quản trị viên</span>
+												@else
+													<span style="color:#27ae60;">Nhân viên</span>
 												@endif
 											</td>
 											<td>{!!$row->created_at!!}</td>

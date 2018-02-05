@@ -13,14 +13,12 @@ class UserController extends Controller
 {
 public function getList(){
 	$data=Admin_users::paginate(10);
- return view('back-end.user.list',compact('data'));
+ 	return view('back-end.user.list',compact('data'));
 }
 public function getAdd(){
 	return view('back-end.user.add');
 }
 	public function postAdd(AddUserRequest $request){
-//		$kt_name=$kt=User::where('name',$request->txtName)->where('id','<>',$id)->count();
-//		$kt_email=$kt=User::where('name',$request->txtEmail)->where('id','<>',$id)->count();
 		$user=new Admin_users();
 		$user->name=$request->txtName;
 		$user->email=$request->txtEmail;
@@ -42,7 +40,7 @@ public function getEdit($id){
 	}
 }
 public function postEdit($id,EditUserRequest $request){
-	$kt_name=$kt=Admin_users::where('name',$request->txtName)->where('id','<>',$id)->count();
+	$kt_name = Admin_users::where('name',$request->txtName)->where('id','<>',$id)->count();
 	if ($kt_name==1){
 		return redirect()->back()->with('error','Tên nhân viên đã tồn tại');
 	}
@@ -68,7 +66,7 @@ public function postEdit($id,EditUserRequest $request){
 	}
 }
 public function getDel($id){
-	$current_id = Auth::user()->id;
+	$current_id = Auth::guard('admin_user')->user()->id;
 	$user = Admin_users::find($id);
 	if ($current_id != 1 && (($id == 1) || ($user->id != 1 && $user->level == 1) || ($user->level == 1 && $user->id == $current_id))) {
 		return redirect()->back()->with('error','Bạn không thể xóa thành viên này');

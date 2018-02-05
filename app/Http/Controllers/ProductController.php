@@ -8,11 +8,19 @@ use App\product;
 use App\category;
 use App\product_detail;
 use App\product_img;
+use App\comment;
 use App\Http\Requests\AddProductRequest;
 use DateTime,File,Input,DB,Auth;
 
 class ProductController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth:admin_user');
+    }
+    public function index(){
+    	return view('back-end.home');
+    }
     public function getAdd(){
 	    $data=category::all();
 	    return view('back-end.products.add',compact('data'));
@@ -105,8 +113,12 @@ class ProductController extends Controller
 		    return view('back-end.products.list',compact('data'));
     }
     public function getDel($id){
+
 	    $detail = product_img::where('pro_id',$id)->get();
 	    foreach ($detail as $row) {
+	    	DB::table('product_details')->where('pro_id')->delete();
+	    	DB::table('comments')->where('pro_id')->delete();
+	    	DB::table('oder_details')->where('pro_id')->delete();
 		    $dt = product_img::find($row->id);
 		    $pt = public_path('uploads/products/details/').$dt->images;
 		    // dd($pt);
@@ -224,5 +236,23 @@ class ProductController extends Controller
 	    $str_keyword = str_replace(" ","%",$keyword);
     	$data=product::where('name','like','%'.$str_keyword.'%')->paginate(10);
 	    return view('back-end.products.search',compact(['data','keyword']));
+    }
+    public function getListPComment(){
+    	$data = product::where('comment','>',0)->paginate(10);
+    	return view('back-end.comments.listcomments',compact(['data']));
+
+    }
+    public function getListComment($id){
+    	$data = comment::where('pro_id',$id)->paginate(10);
+    	// dd($data);
+    	$product = product::where('id',$id)->first();
+    	// dd($product)
+    	return view('back-end.comments.list',compact(['product','data']));
+    }
+    public function getDelComment($id,$product_id){
+    	$data = comment::find($id);
+    	$data->delete();
+	    return redirect('admin/sanpham/comments/'.$product_id)
+		    ->with('success','Đã xóa thành công !');
     }
 }

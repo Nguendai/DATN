@@ -2,6 +2,103 @@
     padding: 0px;
     margin: 0px;
 }
+.__comment {
+    padding: 20px;
+    background-color: white;
+    margin: 15px 0px;
+    border: 1px solid #8080804f;
+}
+.description-info {
+    background-color: white;
+    border: 1px solid #80808038;
+    padding: 10px;
+    font-size: 18px;
+}
+.fa-star:before,.rating-symbol-background.fa.fa-star-o.fa-1x {
+    color: #ffb400;
+}
+.rating { 
+  border: none;
+  float: left;
+}
+div.stars {
+  width: 270px;
+  display: inline-block;
+}
+
+.symbol {
+  display: inline-block;
+  border-radius: 50%;
+  border: 5px double white;
+  width: 30px;
+  height: 30px;
+}
+
+.symbol-empty {
+  background-color: white;
+}
+
+.symbol-filled {
+  background-color: #ffb400;
+}
+
+
+ 
+p.info {
+    font-size: 21px;
+    color: blue;
+}
+.resetPass {
+    width: 45%;
+    margin: auto;
+    background: white;
+    padding: 10px;
+    margin-bottom: 13px;
+}
+.resetPass input#pwd {
+    position: inherit;
+}
+.viewadd {
+    margin-bottom: 10px;
+}
+.__success {
+    border: 1px solid #00d8a3;
+    margin: 14px;
+    padding: 21px;
+    font-size: 15px;
+}
+.__inner-main input.form-control {
+    position: initial;
+}
+.thumbnail button.btn.btn-wishlist a {
+    color: white;
+}
+.address {
+    margin-top: 75px;
+}
+.contact_form.col-lg-5.col-md-6.col-sm-12.col-xs-12 {
+    margin-bottom: 11px;
+}
+.contact_form input.form-control {
+    position: inherit;
+}
+
+.thumbnail button.btn.btn-wishlist a:hover {
+    color: #ffb400;
+}
+.laptop .image {
+    height: 250px;
+}
+.products-list .mobiphone,.laptop {
+    transform: translateX(-500px);
+    opacity: 0;
+    transition: all 1s;
+}
+.products-list .show {
+    transform: translateX(0px);
+    opacity: 1;
+
+}
 .icon-up:before {
     content: "\e0b1";
 }
@@ -31,7 +128,8 @@
     color: #ffffff;
     border: 1px solid #ffb400;
 }
-#tiishop_contact-us #contact-us-nav a {
+#tiishop_contact-us #contact-us-nav p:hover {cursor: pointer;}
+#tiishop_contact-us #contact-us-nav p {
     font-weight: 700;
     font-size: 14px;
     display: inline-block;
@@ -190,7 +288,7 @@ button.btn.btn-primary {
 }
 
 .col-md-6.cache {
-    margin-top: 40px;
+    /* margin-top: 40px; */
 }
 
 .modal-body .col-md-6.block_rad {
@@ -215,10 +313,7 @@ span.glyphicon.glyphicon-envelope {
     color: #909295;
 }
 
-input.form-control {
-    position: absolute;
-    z-index: 1;
-}
+
 
 .modal-body input.form-control {
     padding-left: 30px;
@@ -322,9 +417,7 @@ input.form-control {
 input:required {
     box-shadow:none;
 }
-input:invalid {
-    box-shadow:0 0 3px red;
-}
+
 
 .thumbnail .image:hover {
 }
@@ -349,7 +442,7 @@ input:invalid {
     font-size: 15px;
 }
 
-.thumbnail button.btn.btn-cart:hover {
+.thumbnail button.btn.btn-cart:hover, .viewadd:hover {
     background: #555;
     color: white;
     box-shadow: 2px 3px 3px #888888;
