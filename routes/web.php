@@ -10,61 +10,82 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+Route::group(['prefix'=>'api'],function (){
+	Route::get('/product/{page}', ['as'  => 'index', 'uses' =>'Api\ApiHomeController@getApiHome']);
+	Route::get('detail/{id}',['as'  => 'detail', 'uses' =>'Api\ApiHomeController@getApiDetail']);
+	Route::post('rating',['as' => 'rating ', 'uses'=> 'Api\ApiHomeController@postRate']);
+});
 
-Route::get('/', ['as'  => 'index', 'uses' =>'PagesController@getHome']);
+
+
+
+Route::get('/', ['as'  => 'index2', 'uses' =>'PagesController@getHome']);
+Route::get('/loaddata/view', ['as'  => 'index', 'uses' =>'PagesController@loadData']);
 
 Route::get('search', ['as'  => 'getsearch', 'uses' =>'MailController@getSearch']);
-Route::get('search-pro', ['as'  => 'getsearch', 'uses' =>'MailController@getSearchPro']);
+
 
 Route::Auth();
 //face book login
-Route::get('auth/facebook', 'Auth\SocialController@redirectToProvider');
-Route::get('auth/facebook/callback', 'Auth\SocialController@handleProviderCallback');
+Route::get('auth/facebook', 'SocialAuthController@redirect');
+Route::get('callback', 'SocialAuthController@callback');
 
-Route::get('auth/google', 'Auth\SocialController@redirectToProviderGoogle');
-Route::get('auth/google/callback', 'Auth\SocialController@handleProviderCallbackGoogle');
+Route::get('auth/google', 'SocialAuthController@redirectToProviderGoogle');
+Route::get('google/callback', 'SocialAuthController@handleProviderCallbackGoogle');
 //login route
 Route::get('admin/login', ['as'  => 'getlogin', 'uses' =>'AdminAuth\LoginController@showLoginForm']);
-Route::post('admin/login', ['as'  => 'postlogin', 'uses' =>'AdminAuth\LoginController@login']);
+Route::post('admin/login', ['as'  => 'postlogin', 'uses' =>'AdminAuth\LoginController@postLogin']);
 
 Route::get('admin/register', ['as'  => 'getregister', 'uses' =>'Admin\AuthController@getRegister']);
 Route::post('admin/register', ['as'  => 'postregister', 'uses' =>'Admin\AuthController@postRegister']);
 
 Route::get('admin/password/reset', ['as'  => 'getreser', 'uses' =>'Admin\LoginController@email']);
 
-Route::get('admin/logout', ['as'  => 'getlogout', 'uses' =>'Admin\LoginController@getLogout']);
+Route::get('admin/logout', ['as'  => 'getlogout', 'uses' =>'AdminAuth\LoginController@logout']);
 
 //product_detail
 Route::get('loai-san-pham/{id}/{slug}','PagesController@getProduct');
 Route::get('chi-tiet-san-pham/{id}/{slug}', ['as'  => 'getdetail', 'uses' =>'PagesController@Detail']);
+Route::get('chi-tiet-shop/{id}/{slug}', ['as'  => 'getdetail', 'uses' =>'PagesController@DetailShop']);
+Route::get('chi-tiet-san-pham-sl/{id}', ['as'  => 'getdetail', 'uses' =>'PagesController@Detail_1']);
 //shopping-cart
-Route::get('mua-hang/{id}/{tensanpham}',['as'=>'muahang','uses'=>'PagesController@Purchase']);
-Route::get('gio-hang',['as'=>'giohang','uses'=>'PagesController@Cart']);
-Route::get('xoa-san-pham/{id}',['as'=>'xoasanpham','uses'=>'PagesController@delProductCart']);
-Route::get('cap-nhat/{id}/{qty}',['as'=>'capnhatsanpham','uses'=>'PagesController@updateProductCart']);
+
 Route::get('checkout',['as'=>'checkout','uses'=>'PagesController@checkOut']);
-Route::post('checkout',['as'=>'success','uses'=>'MailController@Success']);
+Route::get('contact',function(){
+	return view('front_end.contact.contact');
+});
+
 Route::get('search-pro/{parent_id}',['as'=>'searchpro','uses'=>'PagesController@searchPro']);
 //customer
 Route::group(['prefix'=>'khachhang'],function (){
-	Route::get('signup',['as'=>'getsignup','uses'=>'CustomerController@getSignUp']);
+	Route::get('resetPassword','MailController@showForm');
+	Route::post('resetPassword','MailController@resetPassword');
+	Route::post('send/{id}','Chat\MessagesController@postSend');
+
+	Route::get('binhchon/{id}','PagesController@likeThis');
+
+	Route::get('getcart/{id}','PagesController@addCart');
 	Route::post('signup',['as'=>'postsignup','uses'=>'CustomerController@postSignUp']);
-	
-	Route::get('forgot',['as'=>'getforgot','uses'=>'CustomerController@getForgot']);
-	Route::post('forgot',['as'=>'postforgot','uses'=>'CustomerController@postForgot']);
-	
 	Route::post('login',['as'=>'postlogin','uses'=>'CustomerController@postLogin']);
-	Route::get('logout',['as'=>'logout','uses'=>'CustomerController@Logout']);
+	Route::post('comment/{id}/{slug}','CustomerController@postComment');
 	
-	Route::post('comment/{id}/{slug}',['as'=>'postcomment','uses'=>'CustomerController@postComment']);
+	Route::get('logout',['as'=>'logout','uses'=>'CustomerController@Logout']);
+	Route::get('cart',['as'=>'giohang','uses'=>'PagesController@listCart']);
+	Route::get('delete-item/{id}',['as'=>'xoasanpham','uses'=>'PagesController@delItem']);
+	Route::post('update_cart/{id}',['as'=>'update','uses'=>'PagesController@updateCart']);
+	Route::post('send','MailController@Success');
+
+	Route::get('cap-nhat/{id}/{qty}',['as'=>'capnhatsanpham','uses'=>'PagesController@updateProductCart']);
 });
 //contact-us
 Route::post('contact-us',['as'=>'contactus','uses'=>'MailController@Contact']);
 //backend
-Route::group(['prefix'=>'admin'],function(){
-	Route::get('home',function(){
-		return view('back-end.home');
-	});
+Route::group(['prefix'=>'admin','middleware'=>'CheckAdmin'],function(){
+	Route::get('home','ProductController@index');
+	Route::get('send/{id}','Chat\MessagesController@admin');
+	Route::post('send/{id}','Chat\MessagesController@adminPostSend');
+	Route::get('chart','Charts\Charts@index');
+
 	Route::group(['prefix'=>'danhmuc'],function(){
 		Route::get('add',['as'=>'getaddcat','uses'=>'CategoryController@getAdd']);
 		Route::post('add',['as'=>'postaddcat','uses'=>'CategoryController@postAdd']);
@@ -78,6 +99,9 @@ Route::group(['prefix'=>'admin'],function(){
 	});
 	
 	Route::group(['prefix'=>'sanpham'],function(){
+		Route::get('comment',['as'=>'getlistpcomment','uses'=>'ProductController@getListPComment']);
+		Route::get('comments/{id}',['as'=>'getlistcomment','uses'=>'ProductController@getListComment']);
+		Route::get('comments/del/{id}/{product_id}',['as'=>'getlistcomment','uses'=>'ProductController@getDelComment']);
 		Route::get('add',['as'=>'getaddpro','uses'=>'ProductController@getAdd']);
 		Route::post('add',['as'=>'postaddpro','uses'=>'ProductController@postAdd']);
 		
@@ -91,7 +115,14 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('search',['as'=>'postsearchpro','uses'=>'ProductController@getSearch']);
 		
 	});
-	
+	Route::group(['prefix'=>'shops'],function(){
+		// Route::get('add',['as'=>'getaddshop','uses'=>'ProductController@getAdd']);
+		Route::get('add',['as'=>'postaddsho','uses'=>'ShopController@getAdd']);
+		Route::post('add',['as'=>'postaddsho','uses'=>'ShopController@postAdd']);
+		Route::get('/',['as'=>'getlistsho','uses'=>'ShopController@getList']);
+		Route::get('edit/{id}',['as'=>'geteditshop','uses'=>'ShopController@getEdit']);
+		
+	});
 	Route::group(['prefix'=>'nhanvien'],function(){
 		Route::get('add',['as'=>'getadduser','uses'=>'UserController@getAdd']);
 		Route::post('add',['as'=>'postadduser','uses'=>'UserController@postAdd']);
@@ -103,7 +134,7 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('edit/{id}',['as'=>'getedituser','uses'=>'UserController@getEdit']);
 		Route::post('edit/{id}',['as'=>'postedituser','uses'=>'UserController@postEdit']);
 	});
-	Route::group(['prefix'=>'khachhang'],function(){
+	Route::group(['prefix'=>'khachhang','middleware' =>'CheckLevel'],function(){
 		
 		Route::get('/',['as'=>'getlistcus','uses'=>'CustomerController@getList']);
 		

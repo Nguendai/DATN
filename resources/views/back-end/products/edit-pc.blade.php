@@ -138,7 +138,7 @@
 				      			<div class="row">					      			
 					      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					      				<label for="input-id">Tóm tắt đánh giá</label>
-					      				<textarea name="txtre_Intro" id="inputTxtre_Intro" class="form-control"  rows="2">{!! old('txtReview',isset($pro->r_intro) ? $pro->r_intro : null) !!}</textarea>
+					      				<textarea name="txtre_Intro" id="inputTxtre_Intro" class="form-control"  rows="2">{!! old('txtReview',isset($pro['r_intro']) ? $pro['r_intro'] : null) !!}</textarea>
 					      				<script type="text/javascript">
 											var editor = CKEDITOR.replace('txtre_Intro',{
 												language:'vi',
@@ -151,7 +151,7 @@
 					      			</div>
 					      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					      				<label for="input-id">Bài đánh giá chi tiết</label>
-					      				<textarea name="txtReview" id="inputtxtReview" class="form-control" rows="4" ">{!! old('txtReview',isset($pro->review) ? $pro->review : null) !!}</textarea>
+					      				<textarea name="txtReview" id="inputtxtReview" class="form-control" rows="4" ">{!! old('txtReview',isset($pro['review']) ? $pro['review'] : null) !!}</textarea>
 					      				<script type="text/javascript">
 											var editor = CKEDITOR.replace('txtReview',{
 												language:'vi',

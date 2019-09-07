@@ -1,0 +1,1 @@
+Xin chào {{$email}} mật khẩu mới của bạn là {{$password}}

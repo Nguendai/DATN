@@ -1,7 +1,0 @@
-@include('front-end.layouts.header')
-@include('front-end.layouts.menu')
-@include('front-end.layouts.slider')
-@include('front-end.layouts.banner')
-@yield('content')
-@include('front-end.layouts.footer')
-@yield('script')

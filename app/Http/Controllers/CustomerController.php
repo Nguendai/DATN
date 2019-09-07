@@ -12,92 +12,108 @@ use DB;
 use Auth;
 use App\comment;
 use Mail;
+use Validator;
+use Session;
 
 class CustomerController extends Controller
 {
-	public function getSignUp(){
-		return view('front-end.signup');
-	}
+	
 	public function postSignUp(CustomerRequest $request){
-		$cus=new User();
-		$cus->name=$request->txtname;
-		$cus->address=$request->txtaddress;
-		$cus->email=$request->txtemail;
-		$cus->phone=$request->txttel;
-		$cus->images='';
-		$cus->password=bcrypt($request->txtpassword);
-		$cus->created_at=new DateTime();
-		$cus->remember_token=$request->_token;
-		$cus->save();
-		return redirect()->back()->with('success','Đăng ký tài khoản thành công!');
+		try{
+
+			$cus = new User();
+			$cus->name = $request->name;
+			$cus->address = '';
+			$cus->email = $request->email;
+			$cus->phone = $request->phone;
+			$cus->images = '';
+			$cus->password = bcrypt($request->password);
+			$cus->created_at = new DateTime();
+			$cus->remember_token=$request->_token;
+			$cus->save();
+			if (Auth::attempt(['email' => $cus->email, 'password' => $request->password])){
+				return response()->json([
+					'code' => 100,
+					'message' => 'Sucesss',
+					'data' => Auth::user()->name,
+				]);
+			}
+			else{
+				return response()->json([
+					'code' => 101,
+					'message'  => 'Error',
+
+				]);
+			}
+		}catch (Exception $e){
+			$data = [
+				'code' => 404,
+				'message' => $e->getMessage(),
+			];
+		}
+		return response()->json($data);
 	}
 	public function postLogin(Request $request) {
 		if (Auth::attempt(['email' => $request->username, 'password' => $request->password])){
 			return response()->json([
-			    'code' => 100,
-                'message' => 'Sucesss',
-                'data' => Auth::user()->name,
-            ]);
+				'code' => 100,
+				'message' => 'Sucesss',
+				'data' => Auth::user()->name,
+			]);
 		}
 		else{
 			return response()->json([
-			    'code' => 101,
-                'message'  => 'Error',
+				'code' => 101,
+				'message'  => 'Error',
 
-            ]);
+			]);
 		}
 	}
 	public function Logout(){
+		$group = DB::table('group_messages')->where('user_id',Auth::user()->id)->first();
+		if($group){
+			DB::table('messages')->where('group_id',$group->id)->delete();
+			DB::table('group_messages')->where('user_id',Auth::user()->id)->delete();
+		}
+		
+		Session::flush();
 		Auth::logout();
+
 		return redirect('/');
 	}
 	public function postComment($id,$slug,Request $request) {
 		if (Auth::check()){
-			$cm=new comment();
-			$cm->name=Auth::user()->name;
-			$cm->email=Auth::user()->email;
-			$cm->comment=$request->txtcomment;
-			$cm->pro_id=$id;
-			$cm->c_id=Auth::user()->id;
+			$cm = new comment();
+			$cm->name = Auth::user()->name;
+			$cm->email = Auth::user()->email;
+			$cm->comment = $request->comment;
+			$cm->pro_id = $id;
+			$cm->user_id = Auth::user()->id;
 			$cm->save();
-			return redirect()->back();
+			DB::table('products')->where('id',$id)->increment('comment', 1);
+			$comment = DB::table('comments')->where('id',$cm->id)->first();
+			$data = '<ul class="clearfix">
+			<li class="m-font fz-18 mb-5">
+			'.$comment->name.
+			'</li>
+			<li>'.$comment->comment.'</li>
+			<li class="color-gray_8 pull-right">'.$comment->created_at.'</li>
+			</ul>';
+			return $data;
 		}
 		else{
 			$pro=product::find($id)->category;
-           echo '<script type="text/javascript">
+			echo '<script type="text/javascript">
 			alert("Bạn cần đăng nhập để bình luận!");
 			window.location.href = "';
-		    echo ('/tii_shop/chi-tiet-san-pham/'.$id.'/'.$slug);
-		    echo '";
+			echo ('/chi-tiet-san-pham/'.$id.'/'.$slug);
+			echo '";
 			</script>';
 		}
 	}
-	public function getForgot(){
-		return view('front-end.forgot');
-	}
-	public function postForgot(Request $request){
-		$GLOBALS['email'] = $request->email;
-		$count = DB::table('users')->where('email',$GLOBALS['email'])->count();
-		if ($count < 1) {
-			;
-			return redirect()->back()->with('error','Emai này không tồn tại!');
-		}
-		else if($count >= 1){
-			$password = str_random(8);
-			DB::table('users')->where('email',$GLOBALS['email'])->update(['password'=>bcrypt($password)]);
-			$data = [
-				'email'=>$GLOBALS['email'],
-				'password'=>$password,
-			];
-			Mail::send('front-end.reset',$data,function($m){
-				$m->from('tientungs295@gmail.com','Hỗ trợ TiiShop');
-				$m->to($GLOBALS['email'])->subject('Mật khẩu khôi phục');
-			});
-			return redirect()->back()->with('success','Mật khẩu đã được khôi phục bạn vui lòng đăng nhập vào email để kiểm tra!');
-		}
-	}
+	
 	public function getList(){
-		$data=User::paginate(3);
+		$data=User::paginate(10);
 		return view('back-end.customers.list',compact('data'));
 	}
 	public function getDel($id){
